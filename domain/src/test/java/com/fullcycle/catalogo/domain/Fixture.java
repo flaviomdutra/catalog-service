@@ -1,6 +1,20 @@
 package com.fullcycle.catalogo.domain;
 
+import com.fullcycle.catalogo.domain.castmember.CastMember;
+import com.fullcycle.catalogo.domain.castmember.CastMemberType;
+import com.fullcycle.catalogo.domain.category.Category;
+import com.fullcycle.catalogo.domain.genre.Genre;
+import com.fullcycle.catalogo.domain.utils.IdUtils;
+import com.fullcycle.catalogo.domain.utils.InstantUtils;
+import com.fullcycle.catalogo.domain.video.Rating;
+import com.fullcycle.catalogo.domain.video.Video;
 import net.datafaker.Faker;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
+import static com.fullcycle.catalogo.domain.utils.InstantUtils.now;
 
 public final class Fixture {
 
@@ -34,4 +48,42 @@ public final class Fixture {
         return "03fe62de";
     }
 
+    public static final class Categories {
+
+        public static Category aulas() {
+            return Category.with(
+                    UUID.randomUUID().toString().replace("-", ""),
+                    "Aulas",
+                    "Conteudo gravado",
+                    true,
+                    now(),
+                    now(),
+                    null
+            );
+        }
+
+        public static Category talks() {
+            return Category.with(
+                    UUID.randomUUID().toString().replace("-", ""),
+                    "Talks",
+                    "Conteudo ao vivo",
+                    false,
+                    now(),
+                    now(),
+                    now()
+            );
+        }
+
+        public static Category lives() {
+            return Category.with(
+                    UUID.randomUUID().toString().replace("-", ""),
+                    "Lives",
+                    "Conteudo ao vivo",
+                    true,
+                    now(),
+                    now(),
+                    null
+            );
+        }
+    }
 }
