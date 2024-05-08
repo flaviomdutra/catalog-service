@@ -1,13 +1,7 @@
 package com.fullcycle.catalogo.domain;
 
-import com.fullcycle.catalogo.domain.castmember.CastMember;
-import com.fullcycle.catalogo.domain.castmember.CastMemberType;
 import com.fullcycle.catalogo.domain.category.Category;
-import com.fullcycle.catalogo.domain.genre.Genre;
-import com.fullcycle.catalogo.domain.utils.IdUtils;
-import com.fullcycle.catalogo.domain.utils.InstantUtils;
-import com.fullcycle.catalogo.domain.video.Rating;
-import com.fullcycle.catalogo.domain.video.Video;
+
 import net.datafaker.Faker;
 
 import java.util.HashSet;
