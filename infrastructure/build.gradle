@@ -10,39 +10,42 @@ group 'com.fullcycle.catalogo.infrastructure'
 
 bootJar {
     archiveName 'application.jar'
-    destinationDirectory.set(file("${rootProject.buildDir}/libs"))
+    destinationDirectory.set(file('${rootProject.buildDir}/libs'))
 }
 
 dependencies {
-    implementation(project(":domain"))
-    implementation(project(":application"))
+    implementation(project(':domain'))
+    implementation(project(':application'))
 
-    implementation("com.google.guava:guava:33.0.0-jre")
+    implementation('com.google.guava:guava:33.0.0-jre')
 
     implementation('com.fasterxml.jackson.module:jackson-module-afterburner')
 
-    implementation("org.springdoc:springdoc-openapi-webmvc-core:1.7.0")
-    implementation("org.springdoc:springdoc-openapi-ui:1.7.0")
+    implementation('org.springdoc:springdoc-openapi-webmvc-core:1.7.0')
+    implementation('org.springdoc:springdoc-openapi-ui:1.7.0')
 
     implementation('org.springframework.boot:spring-boot-starter-web') {
         exclude module: 'spring-boot-starter-tomcat'
     }
     implementation('org.springframework.boot:spring-boot-starter-undertow')
-    implementation("org.springframework.boot:spring-boot-starter-graphql")
+    implementation('org.springframework.boot:spring-boot-starter-graphql')
     implementation('org.springframework.boot:spring-boot-starter-security')
     implementation('org.springframework.boot:spring-boot-starter-oauth2-resource-server')
     implementation('org.springframework.boot:spring-boot-starter-data-elasticsearch')
+    implementation('org.springframework.kafka:spring-kafka')
 
     testImplementation(project(path: ':domain', configuration: 'testClasses'))
 
     testImplementation('org.springframework.boot:spring-boot-starter-test')
-    testImplementation("org.springframework.boot:spring-boot-testcontainers")
-    testImplementation("org.springframework.graphql:spring-graphql-test")
+    testImplementation('org.springframework.boot:spring-boot-testcontainers')
+    testImplementation('org.springframework.graphql:spring-graphql-test')
     testImplementation('org.springframework.security:spring-security-test')
+    testImplementation('org.springframework.kafka:spring-kafka-test')
 
-    testImplementation("org.testcontainers:testcontainers:1.18.3")
-    testImplementation("org.testcontainers:elasticsearch:1.18.3")
-    testImplementation("org.testcontainers:junit-jupiter:1.18.3")
+    testImplementation('org.testcontainers:testcontainers:1.18.3')
+    testImplementation('org.testcontainers:elasticsearch:1.18.3')
+    testImplementation('org.testcontainers:kafka:1.18.3')
+    testImplementation('org.testcontainers:junit-jupiter:1.18.3')
 
 }
 
@@ -50,16 +53,16 @@ testCodeCoverageReport {
     reports {
         xml {
             enabled true
-            destination file("$rootDir/build/reports/jacoco/test/jacocoTestReport.xml")
+            destination file('$rootDir/build/reports/jacoco/test/jacocoTestReport.xml')
         }
 
         html {
             enabled true
-            destination file("$rootDir/build/reports/jacoco/test/")
+            destination file('$rootDir/build/reports/jacoco/test/')
         }
     }
 }
 
-tasks.named("jacocoTestReport") {
-    dependsOn tasks.named("testCodeCoverageReport", JacocoReport)
+tasks.named('jacocoTestReport') {
+    dependsOn tasks.named('testCodeCoverageReport', JacocoReport)
 }
