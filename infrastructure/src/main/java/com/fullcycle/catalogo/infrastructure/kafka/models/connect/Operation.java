@@ -22,6 +22,10 @@ public enum Operation {
                 .orElse(null);
     }
 
+    public static boolean isDelete(Operation op) {
+        return DELETE == op;
+    }
+
     @JsonValue
     public String op() {
         return op;
@@ -29,9 +33,5 @@ public enum Operation {
 
     public boolean isDelete() {
         return isDelete(this);
-    }
-
-    public static boolean isDelete(Operation op) {
-        return DELETE == op;
     }
 }

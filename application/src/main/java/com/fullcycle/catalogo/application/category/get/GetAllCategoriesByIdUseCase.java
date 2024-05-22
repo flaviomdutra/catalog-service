@@ -4,7 +4,6 @@ import com.fullcycle.catalogo.application.UseCase;
 import com.fullcycle.catalogo.domain.category.Category;
 import com.fullcycle.catalogo.domain.category.CategoryGateway;
 
-import java.time.Instant;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;

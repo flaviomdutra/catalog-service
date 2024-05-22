@@ -1,9 +1,8 @@
 package com.fullcycle.catalogo;
 
 //import com.fullcycle.catalogo.infrastructure.castmember.persistence.CastMemberRepository;
+
 import com.fullcycle.catalogo.infrastructure.category.persistence.CategoryRepository;
-//import com.fullcycle.catalogo.infrastructure.genre.persistence.GenreRepository;
-//import com.fullcycle.catalogo.infrastructure.video.persistence.VideoRepository;
 import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;
 

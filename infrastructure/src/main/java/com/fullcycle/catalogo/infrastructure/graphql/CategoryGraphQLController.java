@@ -4,12 +4,11 @@ import com.fullcycle.catalogo.application.category.list.ListCategoryUseCase;
 import com.fullcycle.catalogo.application.category.save.SaveCategoryUseCase;
 import com.fullcycle.catalogo.domain.category.CategorySearchQuery;
 import com.fullcycle.catalogo.infrastructure.category.GqlCategoryPresenter;
-import com.fullcycle.catalogo.infrastructure.category.models.GqlCategoryInput;
 import com.fullcycle.catalogo.infrastructure.category.models.GqlCategory;
+import com.fullcycle.catalogo.infrastructure.category.models.GqlCategoryInput;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;

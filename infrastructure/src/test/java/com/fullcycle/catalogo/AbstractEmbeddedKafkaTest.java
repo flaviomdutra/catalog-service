@@ -35,12 +35,10 @@ import java.util.Collections;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class AbstractEmbeddedKafkaTest {
 
-    private Producer<String, String> producer;
-
-    private AdminClient admin;
-
     @Autowired
     protected EmbeddedKafkaBroker kafkaBroker;
+    private Producer<String, String> producer;
+    private AdminClient admin;
 
     @BeforeAll
     void init() {

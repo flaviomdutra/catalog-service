@@ -7,7 +7,8 @@ import com.fullcycle.catalogo.infrastructure.category.models.GqlCategory;
 
 public final class GqlCategoryPresenter {
 
-    private GqlCategoryPresenter() {}
+    private GqlCategoryPresenter() {
+    }
 
     public static GqlCategory present(final ListCategoryOutput out) {
         return new GqlCategory(out.id(), out.name(), out.description());

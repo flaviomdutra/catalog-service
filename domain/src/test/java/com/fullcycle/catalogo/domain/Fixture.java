@@ -1,11 +1,8 @@
 package com.fullcycle.catalogo.domain;
 
 import com.fullcycle.catalogo.domain.category.Category;
-
 import net.datafaker.Faker;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.UUID;
 
 import static com.fullcycle.catalogo.domain.utils.InstantUtils.now;

@@ -24,10 +24,9 @@ import java.util.Objects;
 @Component
 public class CategoryListener {
 
-    private static final Logger LOG = LoggerFactory.getLogger(CategoryListener.class);
     public static final TypeReference<MessageValue<CategoryEvent>> CATEGORY_MESSAGE = new TypeReference<>() {
     };
-
+    private static final Logger LOG = LoggerFactory.getLogger(CategoryListener.class);
     private final CategoryClient categoryClient;
     private final SaveCategoryUseCase saveCategoryUseCase;
     private final DeleteCategoryUseCase deleteCategoryUseCase;
