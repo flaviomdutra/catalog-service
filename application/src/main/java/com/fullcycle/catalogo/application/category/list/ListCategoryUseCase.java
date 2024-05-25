@@ -18,6 +18,6 @@ public class ListCategoryUseCase extends UseCase<CategorySearchQuery, Pagination
     @Override
     public Pagination<ListCategoryOutput> execute(final CategorySearchQuery aQuery) {
         return this.categoryGateway.findAll(aQuery)
-                .map(ListCategoryOutput::from);
+            .map(ListCategoryOutput::from);
     }
 }

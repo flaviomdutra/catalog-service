@@ -28,26 +28,26 @@ class GetAllCategoriesByIdUseCaseTest extends UseCaseTest {
     public void givenValidIds_whenCallsGetAllById_shouldReturnIt() {
         // given
         final var categories = List.of(
-                Fixture.Categories.lives(),
-                Fixture.Categories.aulas()
+            Fixture.Categories.lives(),
+            Fixture.Categories.aulas()
         );
 
         final var expectedItems = categories.stream()
-                .map(GetAllCategoriesByIdUseCase.Output::new)
-                .toList();
+            .map(GetAllCategoriesByIdUseCase.Output::new)
+            .toList();
 
         final var expectedIds = categories.stream().map(Category::id).collect(Collectors.toSet());
 
         when(this.categoryGateway.findAllById(any()))
-                .thenReturn(categories);
+            .thenReturn(categories);
 
         // when
         final var actualOutput = this.useCase.execute(new GetAllCategoriesByIdUseCase.Input(expectedIds));
 
         // then
         Assertions.assertTrue(
-                expectedItems.size() == actualOutput.size() &&
-                        expectedItems.containsAll(actualOutput)
+            expectedItems.size() == actualOutput.size() &&
+                expectedItems.containsAll(actualOutput)
         );
 
         verify(this.categoryGateway, times(1)).findAllById(expectedIds);

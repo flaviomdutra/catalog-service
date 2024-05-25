@@ -5,13 +5,13 @@ import com.fullcycle.catalogo.domain.category.Category;
 import java.time.Instant;
 
 public record GqlCategoryInput(
-        String id,
-        String name,
-        String description,
-        Boolean active,
-        Instant createdAt,
-        Instant updatedAt,
-        Instant deletedAt
+    String id,
+    String name,
+    String description,
+    Boolean active,
+    Instant createdAt,
+    Instant updatedAt,
+    Instant deletedAt
 ) {
 
     @Override

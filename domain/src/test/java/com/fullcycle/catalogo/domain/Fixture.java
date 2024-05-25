@@ -29,9 +29,9 @@ public final class Fixture {
 
     public static String title() {
         return FAKER.options().option(
-                "System Design no Mercado Livre na prática",
-                "Não cometa esses erros ao trabalhar com Microsserviços",
-                "Testes de Mutação. Você não testa seu software corretamente"
+            "System Design no Mercado Livre na prática",
+            "Não cometa esses erros ao trabalhar com Microsserviços",
+            "Testes de Mutação. Você não testa seu software corretamente"
         );
     }
 
@@ -43,37 +43,37 @@ public final class Fixture {
 
         public static Category aulas() {
             return Category.with(
-                    UUID.randomUUID().toString().replace("-", ""),
-                    "Aulas",
-                    "Conteudo gravado",
-                    true,
-                    now(),
-                    now(),
-                    null
+                UUID.randomUUID().toString().replace("-", ""),
+                "Aulas",
+                "Conteudo gravado",
+                true,
+                now(),
+                now(),
+                null
             );
         }
 
         public static Category talks() {
             return Category.with(
-                    UUID.randomUUID().toString().replace("-", ""),
-                    "Talks",
-                    "Conteudo ao vivo",
-                    false,
-                    now(),
-                    now(),
-                    now()
+                UUID.randomUUID().toString().replace("-", ""),
+                "Talks",
+                "Conteudo ao vivo",
+                false,
+                now(),
+                now(),
+                now()
             );
         }
 
         public static Category lives() {
             return Category.with(
-                    UUID.randomUUID().toString().replace("-", ""),
-                    "Lives",
-                    "Conteudo ao vivo",
-                    true,
-                    now(),
-                    now(),
-                    null
+                UUID.randomUUID().toString().replace("-", ""),
+                "Lives",
+                "Conteudo ao vivo",
+                true,
+                now(),
+                now(),
+                null
             );
         }
     }

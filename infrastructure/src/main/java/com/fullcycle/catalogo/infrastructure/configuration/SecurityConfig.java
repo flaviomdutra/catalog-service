@@ -32,24 +32,24 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(final HttpSecurity http) throws Exception {
         return http
-                .csrf(csrf -> {
-                    csrf.disable();
-                })
-                .authorizeHttpRequests(authorize -> {
-                    authorize
-                            .requestMatchers("/graphql", "/graphiql").permitAll()
-                            .anyRequest().hasRole(ROLE_ADMIN);
-                })
-                .oauth2ResourceServer(oauth -> {
-                    oauth.jwt(j -> j.jwtAuthenticationConverter(new KeycloakJwtConverter()));
-                })
-                .sessionManagement(session -> {
-                    session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-                })
-                .headers(headers -> {
-                    headers.frameOptions(opt -> opt.sameOrigin());
-                })
-                .build();
+            .csrf(csrf -> {
+                csrf.disable();
+            })
+            .authorizeHttpRequests(authorize -> {
+                authorize
+                    .requestMatchers("/graphql", "/graphiql").permitAll()
+                    .anyRequest().hasRole(ROLE_ADMIN);
+            })
+            .oauth2ResourceServer(oauth -> {
+                oauth.jwt(j -> j.jwtAuthenticationConverter(new KeycloakJwtConverter()));
+            })
+            .sessionManagement(session -> {
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+            })
+            .headers(headers -> {
+                headers.frameOptions(opt -> opt.sameOrigin());
+            })
+            .build();
     }
 
     static class KeycloakJwtConverter implements Converter<Jwt, AbstractAuthenticationToken> {
@@ -88,37 +88,37 @@ public class SecurityConfig {
             final var resourceRoles = extractResourceRoles(jwt);
 
             return Stream.concat(realmRoles, resourceRoles)
-                    .map(role -> new SimpleGrantedAuthority(ROLE_PREFIX + role.toUpperCase()))
-                    .collect(Collectors.toSet());
+                .map(role -> new SimpleGrantedAuthority(ROLE_PREFIX + role.toUpperCase()))
+                .collect(Collectors.toSet());
         }
 
         private Stream<String> extractResourceRoles(final Jwt jwt) {
 
             final Function<Map.Entry<String, Object>, Stream<String>> mapResource =
-                    resource -> {
-                        final var key = resource.getKey();
-                        final var value = (Map) resource.getValue();
-                        final var roles = (Collection<String>) value.get(ROLES);
-                        return roles.stream().map(role -> key.concat(SEPARATOR).concat(role));
-                    };
+                resource -> {
+                    final var key = resource.getKey();
+                    final var value = (Map) resource.getValue();
+                    final var roles = (Collection<String>) value.get(ROLES);
+                    return roles.stream().map(role -> key.concat(SEPARATOR).concat(role));
+                };
 
             final Function<Set<Map.Entry<String, Object>>, Collection<String>> mapResources =
-                    resources -> resources.stream()
-                            .flatMap(mapResource)
-                            .toList();
+                resources -> resources.stream()
+                    .flatMap(mapResource)
+                    .toList();
 
             return Optional.ofNullable(jwt.getClaimAsMap(RESOURCE_ACCESS))
-                    .map(resources -> resources.entrySet())
-                    .map(mapResources)
-                    .orElse(Collections.emptyList())
-                    .stream();
+                .map(resources -> resources.entrySet())
+                .map(mapResources)
+                .orElse(Collections.emptyList())
+                .stream();
         }
 
         private Stream<String> extractRealmRoles(final Jwt jwt) {
             return Optional.ofNullable(jwt.getClaimAsMap(REALM_ACCESS))
-                    .map(resource -> (Collection<String>) resource.get(ROLES))
-                    .orElse(Collections.emptyList())
-                    .stream();
+                .map(resource -> (Collection<String>) resource.get(ROLES))
+                .orElse(Collections.emptyList())
+                .stream();
         }
     }
 }

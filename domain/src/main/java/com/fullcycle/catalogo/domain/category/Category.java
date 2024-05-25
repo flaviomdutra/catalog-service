@@ -15,13 +15,13 @@ public class Category {
     private final Instant deletedAt;
 
     private Category(
-            final String anId,
-            final String aName,
-            final String aDescription,
-            final boolean isActive,
-            final Instant aCreationDate,
-            final Instant aUpdateDate,
-            final Instant aDeleteDate
+        final String anId,
+        final String aName,
+        final String aDescription,
+        final boolean isActive,
+        final Instant aCreationDate,
+        final Instant aUpdateDate,
+        final Instant aDeleteDate
     ) {
         this.id = anId;
         this.name = aName;
@@ -33,34 +33,34 @@ public class Category {
     }
 
     public static Category with(
-            final String anId,
-            final String aName,
-            final String aDescription,
-            final boolean isActive,
-            final Instant aCreationDate,
-            final Instant aUpdateDate,
-            final Instant aDeleteDate
+        final String anId,
+        final String aName,
+        final String aDescription,
+        final boolean isActive,
+        final Instant aCreationDate,
+        final Instant aUpdateDate,
+        final Instant aDeleteDate
     ) {
         return new Category(
-                anId,
-                aName,
-                aDescription,
-                isActive,
-                aCreationDate,
-                aUpdateDate,
-                aDeleteDate
+            anId,
+            aName,
+            aDescription,
+            isActive,
+            aCreationDate,
+            aUpdateDate,
+            aDeleteDate
         );
     }
 
     public static Category with(final Category category) {
         return with(
-                category.id(),
-                category.name(),
-                category.description(),
-                category.active(),
-                category.createdAt(),
-                category.updatedAt(),
-                category.deletedAt()
+            category.id(),
+            category.name(),
+            category.description(),
+            category.active(),
+            category.createdAt(),
+            category.updatedAt(),
+            category.deletedAt()
         );
     }
 

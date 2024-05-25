@@ -13,8 +13,8 @@ public class CategoryDocument {
     private String id;
 
     @MultiField(
-            mainField = @Field(type = FieldType.Text, name = "name"),
-            otherFields = @InnerField(suffix = "keyword", type = FieldType.Keyword)
+        mainField = @Field(type = FieldType.Text, name = "name"),
+        otherFields = @InnerField(suffix = "keyword", type = FieldType.Keyword)
     )
     private String name;
 
@@ -34,13 +34,13 @@ public class CategoryDocument {
     private Instant deletedAt;
 
     public CategoryDocument(
-            final String id,
-            final String name,
-            final String description,
-            final boolean active,
-            final Instant createdAt,
-            final Instant updatedAt,
-            final Instant deletedAt
+        final String id,
+        final String name,
+        final String description,
+        final boolean active,
+        final Instant createdAt,
+        final Instant updatedAt,
+        final Instant deletedAt
     ) {
         this.id = id;
         this.name = name;
@@ -53,25 +53,25 @@ public class CategoryDocument {
 
     public static CategoryDocument from(final Category aCategory) {
         return new CategoryDocument(
-                aCategory.id(),
-                aCategory.name(),
-                aCategory.description(),
-                aCategory.active(),
-                aCategory.createdAt(),
-                aCategory.updatedAt(),
-                aCategory.deletedAt()
+            aCategory.id(),
+            aCategory.name(),
+            aCategory.description(),
+            aCategory.active(),
+            aCategory.createdAt(),
+            aCategory.updatedAt(),
+            aCategory.deletedAt()
         );
     }
 
     public Category toCategory() {
         return Category.with(
-                id(),
-                name(),
-                description(),
-                active(),
-                createdAt(),
-                updatedAt(),
-                deletedAt()
+            id(),
+            name(),
+            description(),
+            active(),
+            createdAt(),
+            updatedAt(),
+            deletedAt()
         );
     }
 
