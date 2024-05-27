@@ -6,6 +6,7 @@ import com.fullcycle.catalogo.domain.validation.ValidationHandler;
 import java.time.Instant;
 
 public class Category {
+
     private final String id;
     private final String name;
     private final String description;
@@ -34,33 +35,33 @@ public class Category {
 
     public static Category with(
         final String anId,
-        final String aName,
-        final String aDescription,
-        final boolean isActive,
-        final Instant aCreationDate,
-        final Instant aUpdateDate,
-        final Instant aDeleteDate
+        final String name,
+        final String description,
+        final boolean active,
+        final Instant createdAt,
+        final Instant updatedAt,
+        final Instant deletedAt
     ) {
         return new Category(
             anId,
-            aName,
-            aDescription,
-            isActive,
-            aCreationDate,
-            aUpdateDate,
-            aDeleteDate
+            name,
+            description,
+            active,
+            createdAt,
+            updatedAt,
+            deletedAt
         );
     }
 
-    public static Category with(final Category category) {
+    public static Category with(final Category aCategory) {
         return with(
-            category.id(),
-            category.name(),
-            category.description(),
-            category.active(),
-            category.createdAt(),
-            category.updatedAt(),
-            category.deletedAt()
+            aCategory.id(),
+            aCategory.name(),
+            aCategory.description(),
+            aCategory.active(),
+            aCategory.createdAt(),
+            aCategory.updatedAt(),
+            aCategory.deletedAt()
         );
     }
 
