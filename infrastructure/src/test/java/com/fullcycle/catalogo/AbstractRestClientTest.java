@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fullcycle.catalogo.infrastructure.category.CategoryRestClient;
 import com.fullcycle.catalogo.infrastructure.configuration.WebServerConfig;
+//import com.fullcycle.catalogo.infrastructure.genre.GenreRestClient;
+//import com.fullcycle.catalogo.infrastructure.video.VideoRestClient;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import io.github.resilience4j.bulkhead.BulkheadRegistry;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;

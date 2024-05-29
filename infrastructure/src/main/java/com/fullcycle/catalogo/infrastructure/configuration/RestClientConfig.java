@@ -2,6 +2,7 @@ package com.fullcycle.catalogo.infrastructure.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fullcycle.catalogo.infrastructure.configuration.annotations.Categories;
+import com.fullcycle.catalogo.infrastructure.configuration.annotations.Keycloak;
 import com.fullcycle.catalogo.infrastructure.configuration.properties.RestClientProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -24,10 +25,22 @@ public class RestClientConfig {
         return new RestClientProperties();
     }
 
+    @Bean
+    @ConfigurationProperties(prefix = "rest-client.keycloak")
+    @Keycloak
+    public RestClientProperties keycloakRestClientProperties() {
+        return new RestClientProperties();
+    }
 
     @Bean
     @Categories
     public RestClient categoryHttpClient(@Categories final RestClientProperties properties, final ObjectMapper objectMapper) {
+        return restClient(properties, objectMapper);
+    }
+
+    @Bean
+    @Keycloak
+    public RestClient keycloakHttpClient(@Keycloak final RestClientProperties properties, final ObjectMapper objectMapper) {
         return restClient(properties, objectMapper);
     }
 
