@@ -4,13 +4,11 @@ import com.fullcycle.catalogo.application.castmember.list.ListCastMemberUseCase;
 import com.fullcycle.catalogo.application.castmember.save.SaveCastMemberUseCase;
 import com.fullcycle.catalogo.domain.castmember.CastMemberSearchQuery;
 import com.fullcycle.catalogo.infrastructure.castmember.GqlCastMemberPresenter;
-import com.fullcycle.catalogo.infrastructure.castmember.models.GqlCastMemberInput;
 import com.fullcycle.catalogo.infrastructure.castmember.models.GqlCastMember;
-//import com.fullcycle.catalogo.infrastructure.configuration.security.Roles;
+import com.fullcycle.catalogo.infrastructure.castmember.models.GqlCastMemberInput;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;

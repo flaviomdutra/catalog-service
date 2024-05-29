@@ -60,16 +60,16 @@ public class CastMemberGraphQLControllerTest {
             .thenReturn(new Pagination<>(expectedPage, expectedPerPage, castMembers.size(), castMembers));
 
         final var query = """
-                {
-                  castMembers {
-                    id
-                    name
-                    type
-                    createdAt
-                    updatedAt
-                  }
-                }
-                """;
+            {
+              castMembers {
+                id
+                name
+                type
+                createdAt
+                updatedAt
+              }
+            }
+            """;
 
         // when
         final var res = this.graphql.document(query).execute();
@@ -116,17 +116,17 @@ public class CastMemberGraphQLControllerTest {
             .thenReturn(new Pagination<>(expectedPage, expectedPerPage, castMembers.size(), castMembers));
 
         final var query = """
-                query AllCastMembers($search: String, $page: Int, $perPage: Int, $sort: String, $direction: String) {
-                                
-                  castMembers(search: $search, page: $page, perPage: $perPage, sort: $sort, direction: $direction) {
-                    id
-                    name
-                    type
-                    createdAt
-                    updatedAt
-                  }
-                }
-                """;
+            query AllCastMembers($search: String, $page: Int, $perPage: Int, $sort: String, $direction: String) {
+                            
+              castMembers(search: $search, page: $page, perPage: $perPage, sort: $sort, direction: $direction) {
+                id
+                name
+                type
+                createdAt
+                updatedAt
+              }
+            }
+            """;
 
         // when
         final var res = this.graphql.document(query)
@@ -177,16 +177,16 @@ public class CastMemberGraphQLControllerTest {
         );
 
         final var query = """
-                mutation SaveCastMember($input: CastMemberInput!) {
-                    castMember: saveCastMember(input: $input) {
-                        id
-                        name
-                        type
-                        createdAt
-                        updatedAt
-                    }
+            mutation SaveCastMember($input: CastMemberInput!) {
+                castMember: saveCastMember(input: $input) {
+                    id
+                    name
+                    type
+                    createdAt
+                    updatedAt
                 }
-                """;
+            }
+            """;
 
         doAnswer(returnsFirstArg()).when(saveCastMemberUseCase).execute(any());
 

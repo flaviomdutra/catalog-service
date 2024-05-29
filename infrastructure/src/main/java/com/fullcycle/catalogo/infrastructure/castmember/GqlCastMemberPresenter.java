@@ -7,7 +7,8 @@ import com.fullcycle.catalogo.infrastructure.castmember.models.GqlCastMember;
 
 public final class GqlCastMemberPresenter {
 
-    private GqlCastMemberPresenter() {}
+    private GqlCastMemberPresenter() {
+    }
 
     public static GqlCastMember present(final ListCastMembersOutput out) {
         return new GqlCastMember(out.id(), out.name(), out.type().name(), out.createdAt().toString(), out.updatedAt().toString());
