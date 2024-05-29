@@ -18,6 +18,27 @@ import java.util.List;
 @Configuration(proxyBeanMethods = false)
 public class RestClientConfig {
 
+    private static RestClient restClient(final RestClientProperties properties, final ObjectMapper objectMapper) {
+        final var factory = new JdkClientHttpRequestFactory();
+        factory.setReadTimeout(properties.readTimeout());
+
+        return RestClient.builder()
+            .baseUrl(properties.baseUrl())
+            .requestFactory(factory)
+            .messageConverters(converters -> {
+                converters.removeIf(it -> it instanceof MappingJackson2HttpMessageConverter);
+                converters.add(jsonConverter(objectMapper));
+                converters.add(new FormHttpMessageConverter());
+            })
+            .build();
+    }
+
+    private static MappingJackson2HttpMessageConverter jsonConverter(ObjectMapper objectMapper) {
+        final var jsonConverter = new MappingJackson2HttpMessageConverter(objectMapper);
+        jsonConverter.setSupportedMediaTypes(List.of(MediaType.APPLICATION_JSON));
+        return jsonConverter;
+    }
+
     @Bean
     @ConfigurationProperties(prefix = "rest-client.categories")
     @Categories
@@ -42,26 +63,5 @@ public class RestClientConfig {
     @Keycloak
     public RestClient keycloakHttpClient(@Keycloak final RestClientProperties properties, final ObjectMapper objectMapper) {
         return restClient(properties, objectMapper);
-    }
-
-    private static RestClient restClient(final RestClientProperties properties, final ObjectMapper objectMapper) {
-        final var factory = new JdkClientHttpRequestFactory();
-        factory.setReadTimeout(properties.readTimeout());
-
-        return RestClient.builder()
-            .baseUrl(properties.baseUrl())
-            .requestFactory(factory)
-            .messageConverters(converters -> {
-                converters.removeIf(it -> it instanceof MappingJackson2HttpMessageConverter);
-                converters.add(jsonConverter(objectMapper));
-                converters.add(new FormHttpMessageConverter());
-            })
-            .build();
-    }
-
-    private static MappingJackson2HttpMessageConverter jsonConverter(ObjectMapper objectMapper) {
-        final var jsonConverter = new MappingJackson2HttpMessageConverter(objectMapper);
-        jsonConverter.setSupportedMediaTypes(List.of(MediaType.APPLICATION_JSON));
-        return jsonConverter;
     }
 }

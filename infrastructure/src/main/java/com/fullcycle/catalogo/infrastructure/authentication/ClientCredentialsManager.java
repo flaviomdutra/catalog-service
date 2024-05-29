@@ -13,11 +13,9 @@ public class ClientCredentialsManager implements GetClientCredentials, RefreshCl
 
     private static final AtomicReferenceFieldUpdater<ClientCredentialsManager, ClientCredentials> UPDATER
         = AtomicReferenceFieldUpdater.newUpdater(ClientCredentialsManager.class, ClientCredentials.class, "credentials");
-
-    private volatile ClientCredentials credentials;
-
     private final AuthenticationGateway authenticationGateway;
     private final KeycloakProperties keycloakProperties;
+    private volatile ClientCredentials credentials;
 
     public ClientCredentialsManager(
         final AuthenticationGateway authenticationGateway,
