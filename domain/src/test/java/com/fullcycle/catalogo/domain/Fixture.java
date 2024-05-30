@@ -3,8 +3,12 @@ package com.fullcycle.catalogo.domain;
 import com.fullcycle.catalogo.domain.castmember.CastMember;
 import com.fullcycle.catalogo.domain.castmember.CastMemberType;
 import com.fullcycle.catalogo.domain.category.Category;
+import com.fullcycle.catalogo.domain.genre.Genre;
+import com.fullcycle.catalogo.domain.utils.IdUtils;
 import net.datafaker.Faker;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import static com.fullcycle.catalogo.domain.utils.InstantUtils.now;
@@ -96,6 +100,21 @@ public final class Fixture {
 
         public static CastMember leonan() {
             return CastMember.with(UUID.randomUUID().toString(), "Leonan FullCycle", CastMemberType.DIRECTOR, now(), now());
+        }
+    }
+
+    public static final class Genres {
+
+        public static Genre tech() {
+            return Genre.with(IdUtils.uniqueId(), "Technology", true, Set.of("c456"), now(), now(), null);
+        }
+
+        public static Genre business() {
+            return Genre.with(IdUtils.uniqueId(), "Business", false, new HashSet<>(), now(), now(), now());
+        }
+
+        public static Genre marketing() {
+            return Genre.with(IdUtils.uniqueId(), "Marketing", true, Set.of("c123"), now(), now(), null);
         }
     }
 }
