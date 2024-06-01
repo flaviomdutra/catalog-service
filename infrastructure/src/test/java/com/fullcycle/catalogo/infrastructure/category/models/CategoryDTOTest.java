@@ -18,16 +18,16 @@ class CategoryDTOTest {
     @Test
     public void testUnmarshall_shouldReadSnakeCaseResponse() throws IOException {
         final var categoryResponse = """
-                {
-                    "id": "a26ce442a369459f9a1579abe6727efc",
-                    "name": "Documentário",
-                    "description": "A categoria de documentários",
-                    "is_active": false,
-                    "created_at": "2024-02-14T01:27:56.427186Z",
-                    "updated_at": "2024-02-14T14:22:57.435831Z",
-                    "deleted_at": "2024-02-14T14:22:57.435774Z"
-                }
-                """;
+            {
+                "id": "a26ce442a369459f9a1579abe6727efc",
+                "name": "Documentário",
+                "description": "A categoria de documentários",
+                "is_active": false,
+                "created_at": "2024-02-14T01:27:56.427186Z",
+                "updated_at": "2024-02-14T14:22:57.435831Z",
+                "deleted_at": "2024-02-14T14:22:57.435774Z"
+            }
+            """;
 
         final var actualCategory = this.json.parse(categoryResponse);
 

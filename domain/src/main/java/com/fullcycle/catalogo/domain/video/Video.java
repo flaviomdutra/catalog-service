@@ -1,4 +1,3 @@
-
 package com.fullcycle.catalogo.domain.video;
 
 import com.fullcycle.catalogo.domain.validation.Error;
