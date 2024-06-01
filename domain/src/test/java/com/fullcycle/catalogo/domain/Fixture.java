@@ -5,6 +5,9 @@ import com.fullcycle.catalogo.domain.castmember.CastMemberType;
 import com.fullcycle.catalogo.domain.category.Category;
 import com.fullcycle.catalogo.domain.genre.Genre;
 import com.fullcycle.catalogo.domain.utils.IdUtils;
+import com.fullcycle.catalogo.domain.utils.InstantUtils;
+import com.fullcycle.catalogo.domain.video.Rating;
+import com.fullcycle.catalogo.domain.video.Video;
 import net.datafaker.Faker;
 
 import java.util.HashSet;
@@ -115,6 +118,82 @@ public final class Fixture {
 
         public static Genre marketing() {
             return Genre.with(IdUtils.uniqueId(), "Marketing", true, Set.of("c123"), now(), now(), null);
+        }
+    }
+
+    public static final class Videos {
+
+        public static Rating rating() {
+            return FAKER.options().option(Rating.values());
+        }
+
+        public static Video systemDesign() {
+            return Video.with(
+                IdUtils.uniqueId(),
+                "System Design no Mercado Livre na prática",
+                "O vídeo mais assistido",
+                2022,
+                Fixture.duration(),
+                Rating.AGE_16.getName(),
+                true,
+                true,
+                InstantUtils.now().toString(),
+                InstantUtils.now().toString(),
+                "http://video",
+                "http://trailer",
+                "http://banner",
+                "http://thumb",
+                "http://thumbhalf",
+                Set.of("aulas"),
+                Set.of("luiz"),
+                Set.of("systemdesign")
+            );
+        }
+
+        public static Video java21() {
+            return Video.with(
+                IdUtils.uniqueId(),
+                "Java 21",
+                "Java FTW",
+                2023,
+                Fixture.duration(),
+                Rating.AGE_10.getName(),
+                true,
+                true,
+                InstantUtils.now().toString(),
+                InstantUtils.now().toString(),
+                "http://video",
+                "http://trailer",
+                "http://banner",
+                "http://thumb",
+                "http://thumbhalf",
+                Set.of("lives"),
+                Set.of("gabriel"),
+                Set.of("java")
+            );
+        }
+
+        public static Video golang() {
+            return Video.with(
+                IdUtils.uniqueId(),
+                "Golang 1.22",
+                "Um vídeo da linguagem go",
+                2024,
+                Fixture.duration(),
+                Rating.L.getName(),
+                true,
+                true,
+                InstantUtils.now().toString(),
+                InstantUtils.now().toString(),
+                "http://video",
+                "http://trailer",
+                "http://banner",
+                "http://thumb",
+                "http://thumbhalf",
+                Set.of("meeting"),
+                Set.of("wesley"),
+                Set.of("golang")
+            );
         }
     }
 }
