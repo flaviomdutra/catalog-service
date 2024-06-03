@@ -44,21 +44,6 @@ public class GenreElasticsearchGateway implements GenreGateway {
         this.searchOperations = Objects.requireNonNull(searchOperations);
     }
 
-    private static Criteria createCriteria(final GenreSearchQuery aQuery) {
-        Criteria criteria = null;
-
-        if (isNotEmpty(aQuery.terms())) {
-            criteria = where("name").contains(aQuery.terms());
-        }
-
-        if (!isEmpty(aQuery.categories())) {
-            final var categoriesWhere = where("categories").in(aQuery.categories());
-            criteria = criteria != null ? criteria.and(categoriesWhere) : categoriesWhere;
-        }
-
-        return criteria;
-    }
-
     @Override
     public Genre save(final Genre aGenre) {
         this.genreRepository.save(GenreDocument.from(aGenre));
@@ -106,6 +91,21 @@ public class GenreElasticsearchGateway implements GenreGateway {
                 .toList();
 
         return new Pagination<>(currentPage, itemsPerPage, total, genres);
+    }
+
+    private static Criteria createCriteria(final GenreSearchQuery aQuery) {
+        Criteria criteria = null;
+
+        if (isNotEmpty(aQuery.terms())) {
+            criteria = where("name").contains(aQuery.terms());
+        }
+
+        if (!isEmpty(aQuery.categories())) {
+            final var categoriesWhere = where("categories").in(aQuery.categories());
+            criteria = criteria != null ? criteria.and(categoriesWhere) : categoriesWhere;
+        }
+
+        return criteria;
     }
 
     private String buildSort(final String sort) {
