@@ -43,14 +43,14 @@ public class CategoryRestClient implements CategoryClient, HttpClient {
     public Optional<Category> categoryOfId(String categoryId) {
         final var token = this.getClientCredentials.retrieve();
         return doGet(categoryId, () ->
-            this.restClient.get()
-                .uri("/{id}", categoryId)
-                .header(HttpHeaders.AUTHORIZATION, "bearer " + token)
-                .retrieve()
-                .onStatus(isNotFound, notFoundHandler(categoryId))
-                .onStatus(is5xx, a5xxHandler(categoryId))
-                .body(CategoryDTO.class)
+                this.restClient.get()
+                        .uri("/{id}", categoryId)
+                        .header(HttpHeaders.AUTHORIZATION, "bearer " + token)
+                        .retrieve()
+                        .onStatus(isNotFound, notFoundHandler(categoryId))
+                        .onStatus(is5xx, a5xxHandler(categoryId))
+                        .body(CategoryDTO.class)
         )
-            .map(CategoryDTO::toCategory);
+                .map(CategoryDTO::toCategory);
     }
 }

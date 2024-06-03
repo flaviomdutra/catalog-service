@@ -28,26 +28,26 @@ public class CastMemberListener {
     private final DeleteCastMemberUseCase deleteCastMemberUseCase;
 
     public CastMemberListener(
-        final SaveCastMemberUseCase saveCastMemberUseCase,
-        final DeleteCastMemberUseCase deleteCastMemberUseCase
+            final SaveCastMemberUseCase saveCastMemberUseCase,
+            final DeleteCastMemberUseCase deleteCastMemberUseCase
     ) {
         this.saveCastMemberUseCase = Objects.requireNonNull(saveCastMemberUseCase);
         this.deleteCastMemberUseCase = Objects.requireNonNull(deleteCastMemberUseCase);
     }
 
     @KafkaListener(
-        concurrency = "${kafka.consumers.cast-members.concurrency}",
-        containerFactory = "kafkaListenerFactory",
-        topics = "${kafka.consumers.cast-members.topics}",
-        groupId = "${kafka.consumers.cast-members.group-id}",
-        id = "${kafka.consumers.cast-members.id}",
-        properties = {
-            "auto.offset.reset=${kafka.consumers.cast-members.auto-offset-reset}"
-        }
+            concurrency = "${kafka.consumers.cast-members.concurrency}",
+            containerFactory = "kafkaListenerFactory",
+            topics = "${kafka.consumers.cast-members.topics}",
+            groupId = "${kafka.consumers.cast-members.group-id}",
+            id = "${kafka.consumers.cast-members.id}",
+            properties = {
+                    "auto.offset.reset=${kafka.consumers.cast-members.auto-offset-reset}"
+            }
     )
     @RetryableTopic(
-        attempts = "${kafka.consumers.cast-members.max-attempts}",
-        topicSuffixingStrategy = TopicSuffixingStrategy.SUFFIX_WITH_INDEX_VALUE
+            attempts = "${kafka.consumers.cast-members.max-attempts}",
+            topicSuffixingStrategy = TopicSuffixingStrategy.SUFFIX_WITH_INDEX_VALUE
     )
     public void onMessage(@Payload(required = false) final String payload, final ConsumerRecordMetadata metadata) {
         if (payload == null) {

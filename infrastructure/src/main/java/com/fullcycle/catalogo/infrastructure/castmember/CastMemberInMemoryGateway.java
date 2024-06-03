@@ -45,17 +45,17 @@ public class CastMemberInMemoryGateway implements CastMemberGateway {
             return List.of();
         }
         return genreId.stream()
-            .map(this.db::get)
-            .toList();
+                .map(this.db::get)
+                .toList();
     }
 
     @Override
     public Pagination<CastMember> findAll(CastMemberSearchQuery aQuery) {
         return new Pagination<>(
-            aQuery.page(),
-            aQuery.perPage(),
-            this.db.values().size(),
-            this.db.values().stream().toList()
+                aQuery.page(),
+                aQuery.perPage(),
+                this.db.values().size(),
+                this.db.values().stream().toList()
         );
     }
 }

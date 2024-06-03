@@ -21,7 +21,7 @@ public class CastMemberTest extends UnitTest {
 
         // when
         final var actualMember =
-            CastMember.with(expectedID, expectedName, expectedType, expectedDates, expectedDates);
+                CastMember.with(expectedID, expectedName, expectedType, expectedDates, expectedDates);
 
         // then
         Assertions.assertNotNull(actualMember);
@@ -41,7 +41,7 @@ public class CastMemberTest extends UnitTest {
         final var expectedDates = InstantUtils.now();
 
         final var aMember =
-            CastMember.with(expectedID, expectedName, expectedType, expectedDates, expectedDates);
+                CastMember.with(expectedID, expectedName, expectedType, expectedDates, expectedDates);
 
         // then
         final var actualMember = CastMember.with(aMember);
@@ -67,10 +67,10 @@ public class CastMemberTest extends UnitTest {
 
         // when
         final var actualMember =
-            CastMember.with(expectedID, expectedName, expectedType, expectedDates, expectedDates);
+                CastMember.with(expectedID, expectedName, expectedType, expectedDates, expectedDates);
 
         final var actualException =
-            Assertions.assertThrows(DomainException.class, () -> actualMember.validate(new ThrowsValidationHandler()));
+                Assertions.assertThrows(DomainException.class, () -> actualMember.validate(new ThrowsValidationHandler()));
 
         Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
         Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().get(0).message());
@@ -88,10 +88,10 @@ public class CastMemberTest extends UnitTest {
 
         // when
         final var actualMember =
-            CastMember.with(expectedID, expectedName, expectedType, expectedDates, expectedDates);
+                CastMember.with(expectedID, expectedName, expectedType, expectedDates, expectedDates);
 
         final var actualException =
-            Assertions.assertThrows(DomainException.class, () -> actualMember.validate(new ThrowsValidationHandler()));
+                Assertions.assertThrows(DomainException.class, () -> actualMember.validate(new ThrowsValidationHandler()));
 
         Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
         Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().get(0).message());
@@ -109,10 +109,10 @@ public class CastMemberTest extends UnitTest {
 
         // when
         final var actualMember =
-            CastMember.with(expectedID, expectedName, expectedType, expectedDates, expectedDates);
+                CastMember.with(expectedID, expectedName, expectedType, expectedDates, expectedDates);
 
         final var actualException =
-            Assertions.assertThrows(DomainException.class, () -> actualMember.validate(new ThrowsValidationHandler()));
+                Assertions.assertThrows(DomainException.class, () -> actualMember.validate(new ThrowsValidationHandler()));
 
         Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
         Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().get(0).message());
@@ -130,10 +130,10 @@ public class CastMemberTest extends UnitTest {
 
         // when
         final var actualMember =
-            CastMember.with(expectedID, expectedName, expectedType, expectedDates, expectedDates);
+                CastMember.with(expectedID, expectedName, expectedType, expectedDates, expectedDates);
 
         final var actualException =
-            Assertions.assertThrows(DomainException.class, () -> actualMember.validate(new ThrowsValidationHandler()));
+                Assertions.assertThrows(DomainException.class, () -> actualMember.validate(new ThrowsValidationHandler()));
 
         Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
         Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().get(0).message());
@@ -151,10 +151,10 @@ public class CastMemberTest extends UnitTest {
 
         // when
         final var actualMember =
-            CastMember.with(expectedID, expectedName, expectedType, expectedDates, expectedDates);
+                CastMember.with(expectedID, expectedName, expectedType, expectedDates, expectedDates);
 
         final var actualException =
-            Assertions.assertThrows(DomainException.class, () -> actualMember.validate(new ThrowsValidationHandler()));
+                Assertions.assertThrows(DomainException.class, () -> actualMember.validate(new ThrowsValidationHandler()));
 
         Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
         Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().get(0).message());

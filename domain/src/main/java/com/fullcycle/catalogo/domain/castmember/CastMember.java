@@ -14,11 +14,11 @@ public class CastMember {
     private Instant updatedAt;
 
     private CastMember(
-        final String id,
-        final String name,
-        final CastMemberType type,
-        final Instant createdAt,
-        final Instant updatedAt
+            final String id,
+            final String name,
+            final CastMemberType type,
+            final Instant createdAt,
+            final Instant updatedAt
     ) {
         this.id = id;
         this.name = name;
@@ -28,22 +28,22 @@ public class CastMember {
     }
 
     public static CastMember with(
-        final String id,
-        final String name,
-        final CastMemberType type,
-        final Instant createdAt,
-        final Instant updatedAt
+            final String id,
+            final String name,
+            final CastMemberType type,
+            final Instant createdAt,
+            final Instant updatedAt
     ) {
         return new CastMember(id, name, type, createdAt, updatedAt);
     }
 
     public static CastMember with(final CastMember castMember) {
         return with(
-            castMember.id(),
-            castMember.name(),
-            castMember.type(),
-            castMember.createdAt(),
-            castMember.updatedAt()
+                castMember.id(),
+                castMember.name(),
+                castMember.type(),
+                castMember.createdAt(),
+                castMember.updatedAt()
         );
     }
 

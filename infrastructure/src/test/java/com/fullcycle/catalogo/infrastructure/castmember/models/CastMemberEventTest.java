@@ -18,7 +18,7 @@ class CastMemberEventTest {
         final var expectedType = "ACTOR";
         final var expectedUnixTimestamp = 1707086611086071L;
         final var expectedDate = LocalDateTime.of(2024, 02, 04, 22, 43, 31)
-            .toInstant(ZoneOffset.UTC);
+                .toInstant(ZoneOffset.UTC);
 
         final var event = new CastMemberEvent(expectedId, expectedName, expectedType, expectedUnixTimestamp, expectedUnixTimestamp);
 

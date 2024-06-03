@@ -37,12 +37,12 @@ public interface ElasticsearchTestContainer {
 
         private static HttpWaitStrategy httpWaitStrategy() {
             return new HttpWaitStrategy()
-                .forPort(9200)
-                .forPath("/")
-                .forStatusCode(200)
-                .withReadTimeout(Duration.of(5, TimeUnit.MINUTES.toChronoUnit()))
-                .withBasicCredentials(CLUSTER_USER, CLUSTER_PWD)
-                .allowInsecure();
+                    .forPort(9200)
+                    .forPath("/")
+                    .forStatusCode(200)
+                    .withReadTimeout(Duration.of(5, TimeUnit.MINUTES.toChronoUnit()))
+                    .withBasicCredentials(CLUSTER_USER, CLUSTER_PWD)
+                    .allowInsecure();
         }
     }
 }

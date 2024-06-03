@@ -26,7 +26,7 @@ public class DeleteCategoryUseCaseTest extends UseCaseTest {
         final var expectedId = aulas.id();
 
         doNothing()
-            .when(this.categoryGateway).deleteById(anyString());
+                .when(this.categoryGateway).deleteById(anyString());
 
         // when
         Assertions.assertDoesNotThrow(() -> this.useCase.execute(expectedId));

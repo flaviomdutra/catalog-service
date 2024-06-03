@@ -32,7 +32,7 @@ public class SaveCategoryUseCaseTest extends UseCaseTest {
         final var aCategory = Fixture.Categories.aulas();
 
         when(categoryGateway.save(any()))
-            .thenAnswer(returnsFirstArg());
+                .thenAnswer(returnsFirstArg());
 
         // when
         this.useCase.execute(aCategory);
@@ -65,13 +65,13 @@ public class SaveCategoryUseCaseTest extends UseCaseTest {
         final var expectedErrorMessage = "'id' should not be empty";
 
         final var aCategory = Category.with(
-            "",
-            "Aulas",
-            "Conteudo gravado",
-            true,
-            InstantUtils.now(),
-            InstantUtils.now(),
-            null
+                "",
+                "Aulas",
+                "Conteudo gravado",
+                true,
+                InstantUtils.now(),
+                InstantUtils.now(),
+                null
         );
 
         // when
@@ -91,13 +91,13 @@ public class SaveCategoryUseCaseTest extends UseCaseTest {
         final var expectedErrorMessage = "'name' should not be empty";
 
         final var aCategory = Category.with(
-            UUID.randomUUID().toString().replace("-", ""),
-            "",
-            "Conteudo gravado",
-            true,
-            InstantUtils.now(),
-            InstantUtils.now(),
-            null
+                UUID.randomUUID().toString().replace("-", ""),
+                "",
+                "Conteudo gravado",
+                true,
+                InstantUtils.now(),
+                InstantUtils.now(),
+                null
         );
 
         // when

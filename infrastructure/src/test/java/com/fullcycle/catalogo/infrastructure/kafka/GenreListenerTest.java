@@ -63,8 +63,8 @@ class GenreListenerTest extends AbstractEmbeddedKafkaTest {
 
         // when
         final var actualTopics = admin().listTopics().listings().get(10, TimeUnit.SECONDS).stream()
-            .map(TopicListing::name)
-            .collect(Collectors.toSet());
+                .map(TopicListing::name)
+                .collect(Collectors.toSet());
 
         // then
         Assertions.assertTrue(actualTopics.contains(expectedMainTopic));
@@ -89,7 +89,7 @@ class GenreListenerTest extends AbstractEmbeddedKafkaTest {
         final var aulasEvent = new CategoryEvent(aulas.id());
 
         final var message =
-            Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(aulasEvent, aulasEvent, aSource(), Operation.DELETE)));
+                Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(aulasEvent, aulasEvent, aSource(), Operation.DELETE)));
 
         final var latch = new CountDownLatch(5);
 
@@ -129,7 +129,7 @@ class GenreListenerTest extends AbstractEmbeddedKafkaTest {
         final var techEvent = new GenreEvent(tech.id());
 
         final var message =
-            Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(techEvent, techEvent, aSource(), Operation.UPDATE)));
+                Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(techEvent, techEvent, aSource(), Operation.UPDATE)));
 
         final var latch = new CountDownLatch(1);
 
@@ -149,13 +149,13 @@ class GenreListenerTest extends AbstractEmbeddedKafkaTest {
         verify(genreClient, times(1)).genreOfId(eq(tech.id()));
 
         verify(saveGenreUseCase, times(1)).execute(refEq(new SaveGenreUseCase.Input(
-            tech.id(),
-            tech.name(),
-            tech.active(),
-            tech.categories(),
-            tech.createdAt(),
-            tech.updatedAt(),
-            tech.deletedAt()
+                tech.id(),
+                tech.name(),
+                tech.active(),
+                tech.categories(),
+                tech.createdAt(),
+                tech.updatedAt(),
+                tech.deletedAt()
         )));
     }
 
@@ -166,7 +166,7 @@ class GenreListenerTest extends AbstractEmbeddedKafkaTest {
         final var techEvent = new GenreEvent(tech.id());
 
         final var message =
-            Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(techEvent, null, aSource(), Operation.CREATE)));
+                Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(techEvent, null, aSource(), Operation.CREATE)));
 
         final var latch = new CountDownLatch(1);
 
@@ -186,13 +186,13 @@ class GenreListenerTest extends AbstractEmbeddedKafkaTest {
         verify(genreClient, times(1)).genreOfId(eq(tech.id()));
 
         verify(saveGenreUseCase, times(1)).execute(refEq(new SaveGenreUseCase.Input(
-            tech.id(),
-            tech.name(),
-            tech.active(),
-            tech.categories(),
-            tech.createdAt(),
-            tech.updatedAt(),
-            tech.deletedAt()
+                tech.id(),
+                tech.name(),
+                tech.active(),
+                tech.categories(),
+                tech.createdAt(),
+                tech.updatedAt(),
+                tech.deletedAt()
         )));
     }
 
@@ -203,7 +203,7 @@ class GenreListenerTest extends AbstractEmbeddedKafkaTest {
         final var techEvent = new GenreEvent(tech.id());
 
         final var message =
-            Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(null, techEvent, aSource(), Operation.DELETE)));
+                Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(null, techEvent, aSource(), Operation.DELETE)));
 
         final var latch = new CountDownLatch(1);
 

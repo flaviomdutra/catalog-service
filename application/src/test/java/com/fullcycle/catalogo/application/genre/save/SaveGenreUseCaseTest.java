@@ -38,11 +38,11 @@ public class SaveGenreUseCaseTest extends UseCaseTest {
         final var expectedDates = InstantUtils.now();
 
         when(genreGateway.save(any()))
-            .thenAnswer(returnsFirstArg());
+                .thenAnswer(returnsFirstArg());
 
         // when
         final var input =
-            new SaveGenreUseCase.Input(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates);
+                new SaveGenreUseCase.Input(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates);
 
         final var actualOutput = this.useCase.execute(input);
 
@@ -96,11 +96,11 @@ public class SaveGenreUseCaseTest extends UseCaseTest {
 
         // when
         final var input =
-            new SaveGenreUseCase.Input(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates);
+                new SaveGenreUseCase.Input(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates);
 
         final var actualError = assertThrows(
-            DomainException.class,
-            () -> this.useCase.execute(input)
+                DomainException.class,
+                () -> this.useCase.execute(input)
         );
 
         // then
@@ -124,11 +124,11 @@ public class SaveGenreUseCaseTest extends UseCaseTest {
 
         // when
         final var input =
-            new SaveGenreUseCase.Input(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates);
+                new SaveGenreUseCase.Input(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates);
 
         final var actualError = assertThrows(
-            DomainException.class,
-            () -> this.useCase.execute(input)
+                DomainException.class,
+                () -> this.useCase.execute(input)
         );
 
         // then

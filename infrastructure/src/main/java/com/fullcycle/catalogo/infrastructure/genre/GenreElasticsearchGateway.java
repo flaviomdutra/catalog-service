@@ -37,8 +37,8 @@ public class GenreElasticsearchGateway implements GenreGateway {
     private final SearchOperations searchOperations;
 
     public GenreElasticsearchGateway(
-        final GenreRepository genreRepository,
-        final SearchOperations searchOperations
+            final GenreRepository genreRepository,
+            final SearchOperations searchOperations
     ) {
         this.genreRepository = Objects.requireNonNull(genreRepository);
         this.searchOperations = Objects.requireNonNull(searchOperations);
@@ -73,7 +73,7 @@ public class GenreElasticsearchGateway implements GenreGateway {
     @Override
     public Optional<Genre> findById(final String genreId) {
         return this.genreRepository.findById(genreId)
-            .map(GenreDocument::toGenre);
+                .map(GenreDocument::toGenre);
     }
 
     @Override
@@ -82,8 +82,8 @@ public class GenreElasticsearchGateway implements GenreGateway {
             return List.of();
         }
         return StreamSupport.stream(this.genreRepository.findAllById(ids).spliterator(), false)
-            .map(GenreDocument::toGenre)
-            .toList();
+                .map(GenreDocument::toGenre)
+                .toList();
     }
 
     @Override
@@ -95,15 +95,15 @@ public class GenreElasticsearchGateway implements GenreGateway {
         final var pageRequest = PageRequest.of(currentPage, itemsPerPage, sort);
 
         final Query query = StringUtils.isEmpty(terms) && isEmpty(aQuery.categories())
-            ? Query.findAll().setPageable(pageRequest)
-            : new CriteriaQuery(createCriteria(aQuery), pageRequest);
+                ? Query.findAll().setPageable(pageRequest)
+                : new CriteriaQuery(createCriteria(aQuery), pageRequest);
 
         final var res = this.searchOperations.search(query, GenreDocument.class);
         final var total = res.getTotalHits();
         final var genres = res.stream()
-            .map(SearchHit::getContent)
-            .map(GenreDocument::toGenre)
-            .toList();
+                .map(SearchHit::getContent)
+                .map(GenreDocument::toGenre)
+                .toList();
 
         return new Pagination<>(currentPage, itemsPerPage, total, genres);
     }

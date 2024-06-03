@@ -17,8 +17,8 @@ public class KeycloakAuthenticationGateway implements AuthenticationGateway {
     private final String tokenUri;
 
     public KeycloakAuthenticationGateway(
-        @Keycloak final RestClient restClient,
-        final KeycloakProperties keycloakProperties
+            @Keycloak final RestClient restClient,
+            final KeycloakProperties keycloakProperties
     ) {
         this.restClient = Objects.requireNonNull(restClient);
         this.tokenUri = keycloakProperties.tokenUri();
@@ -32,12 +32,12 @@ public class KeycloakAuthenticationGateway implements AuthenticationGateway {
         map.set("client_secret", input.clientSecret());
 
         final var output = this.restClient.post()
-            .uri(tokenUri)
-            .accept(MediaType.APPLICATION_JSON)
-            .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-            .body(map)
-            .retrieve()
-            .body(KeycloakAuthenticationResult.class);
+                .uri(tokenUri)
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .body(map)
+                .retrieve()
+                .body(KeycloakAuthenticationResult.class);
 
         if (output == null) {
             throw InternalErrorException.with("Failed to create client credentials [clientId:%s]".formatted(input.clientId()));
@@ -55,12 +55,12 @@ public class KeycloakAuthenticationGateway implements AuthenticationGateway {
         map.set("refresh_token", input.refreshToken());
 
         final var output = this.restClient.post()
-            .uri(tokenUri)
-            .accept(MediaType.APPLICATION_JSON)
-            .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-            .body(map)
-            .retrieve()
-            .body(KeycloakAuthenticationResult.class);
+                .uri(tokenUri)
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .body(map)
+                .retrieve()
+                .body(KeycloakAuthenticationResult.class);
 
         if (output == null) {
             throw InternalErrorException.with("Failed to refresh client credentials [clientId:%s]".formatted(input.clientId()));
@@ -70,8 +70,8 @@ public class KeycloakAuthenticationGateway implements AuthenticationGateway {
     }
 
     public record KeycloakAuthenticationResult(
-        String accessToken,
-        String refreshToken
+            String accessToken,
+            String refreshToken
     ) {
     }
 }

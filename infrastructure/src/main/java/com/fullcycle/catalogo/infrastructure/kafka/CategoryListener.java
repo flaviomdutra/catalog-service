@@ -32,9 +32,9 @@ public class CategoryListener {
     private final DeleteCategoryUseCase deleteCategoryUseCase;
 
     public CategoryListener(
-        final CategoryClient categoryClient,
-        final SaveCategoryUseCase saveCategoryUseCase,
-        final DeleteCategoryUseCase deleteCategoryUseCase
+            final CategoryClient categoryClient,
+            final SaveCategoryUseCase saveCategoryUseCase,
+            final DeleteCategoryUseCase deleteCategoryUseCase
     ) {
         this.categoryClient = Objects.requireNonNull(categoryClient);
         this.saveCategoryUseCase = Objects.requireNonNull(saveCategoryUseCase);
@@ -42,19 +42,19 @@ public class CategoryListener {
     }
 
     @KafkaListener(
-        concurrency = "${kafka.consumers.categories.concurrency}",
-        containerFactory = "kafkaListenerFactory",
-        topics = "${kafka.consumers.categories.topics}",
-        groupId = "${kafka.consumers.categories.group-id}",
-        id = "${kafka.consumers.categories.id}",
-        properties = {
-            "auto.offset.reset=${kafka.consumers.categories.auto-offset-reset}"
-        }
+            concurrency = "${kafka.consumers.categories.concurrency}",
+            containerFactory = "kafkaListenerFactory",
+            topics = "${kafka.consumers.categories.topics}",
+            groupId = "${kafka.consumers.categories.group-id}",
+            id = "${kafka.consumers.categories.id}",
+            properties = {
+                    "auto.offset.reset=${kafka.consumers.categories.auto-offset-reset}"
+            }
     )
     @RetryableTopic(
-        backoff = @Backoff(delay = 1000, multiplier = 2),
-        attempts = "${kafka.consumers.categories.max-attempts}",
-        topicSuffixingStrategy = TopicSuffixingStrategy.SUFFIX_WITH_INDEX_VALUE
+            backoff = @Backoff(delay = 1000, multiplier = 2),
+            attempts = "${kafka.consumers.categories.max-attempts}",
+            topicSuffixingStrategy = TopicSuffixingStrategy.SUFFIX_WITH_INDEX_VALUE
     )
     public void onMessage(@Payload(required = false) final String payload, final ConsumerRecordMetadata metadata) {
         if (payload == null) {
@@ -70,9 +70,9 @@ public class CategoryListener {
             this.deleteCategoryUseCase.execute(messagePayload.before().id());
         } else {
             this.categoryClient.categoryOfId(messagePayload.after().id())
-                .ifPresentOrElse(this.saveCategoryUseCase::execute, () -> {
-                    LOG.warn("Category was not found {}", messagePayload.after().id());
-                });
+                    .ifPresentOrElse(this.saveCategoryUseCase::execute, () -> {
+                        LOG.warn("Category was not found {}", messagePayload.after().id());
+                    });
         }
     }
 
@@ -86,9 +86,9 @@ public class CategoryListener {
             this.deleteCategoryUseCase.execute(messagePayload.before().id());
         } else {
             this.categoryClient.categoryOfId(messagePayload.after().id())
-                .ifPresentOrElse(this.saveCategoryUseCase::execute, () -> {
-                    LOG.warn("Category was not found {}", messagePayload.after().id());
-                });
+                    .ifPresentOrElse(this.saveCategoryUseCase::execute, () -> {
+                        LOG.warn("Category was not found {}", messagePayload.after().id());
+                    });
         }
     }
 }

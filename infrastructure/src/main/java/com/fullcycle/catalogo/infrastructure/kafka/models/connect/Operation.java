@@ -17,9 +17,9 @@ public enum Operation {
     @JsonCreator
     public static Operation of(final String value) {
         return Arrays.stream(values())
-            .filter(it -> it.op.equalsIgnoreCase(value))
-            .findFirst()
-            .orElse(null);
+                .filter(it -> it.op.equalsIgnoreCase(value))
+                .findFirst()
+                .orElse(null);
     }
 
     public static boolean isDelete(Operation op) {

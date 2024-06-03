@@ -10,8 +10,8 @@ public enum CastMemberType {
             return CastMemberType.UNKNOWN;
         }
         return Arrays.stream(values())
-            .filter(it -> it.name().equalsIgnoreCase(type))
-            .findFirst()
-            .orElse(CastMemberType.UNKNOWN);
+                .filter(it -> it.name().equalsIgnoreCase(type))
+                .findFirst()
+                .orElse(CastMemberType.UNKNOWN);
     }
 }

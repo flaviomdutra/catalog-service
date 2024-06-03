@@ -22,7 +22,7 @@ public class GenreTest extends UnitTest {
 
         // when
         final var actualGenre =
-            Genre.with(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates);
+                Genre.with(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates);
 
         // then
         Assertions.assertNotNull(actualGenre);
@@ -45,7 +45,7 @@ public class GenreTest extends UnitTest {
         final var expectedDates = InstantUtils.now();
 
         final var aGenre =
-            Genre.with(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates);
+                Genre.with(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates);
 
         // then
         final var actualGenre = Genre.with(aGenre);
@@ -72,7 +72,7 @@ public class GenreTest extends UnitTest {
 
         // then
         final var actualGenre =
-            Genre.with(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates);
+                Genre.with(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates);
 
         // when
         Assertions.assertNotNull(actualGenre);
@@ -100,8 +100,8 @@ public class GenreTest extends UnitTest {
 
         // when
         final var actualException = Assertions.assertThrows(
-            DomainException.class,
-            () -> Genre.with(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates)
+                DomainException.class,
+                () -> Genre.with(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates)
         );
 
         // then
@@ -123,8 +123,8 @@ public class GenreTest extends UnitTest {
 
         // when
         final var actualException = Assertions.assertThrows(
-            DomainException.class,
-            () -> Genre.with(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates)
+                DomainException.class,
+                () -> Genre.with(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates)
         );
 
         // then
@@ -146,8 +146,8 @@ public class GenreTest extends UnitTest {
 
         // when
         final var actualException = Assertions.assertThrows(
-            DomainException.class,
-            () -> Genre.with(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates)
+                DomainException.class,
+                () -> Genre.with(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates)
         );
 
         // then
@@ -169,8 +169,8 @@ public class GenreTest extends UnitTest {
 
         // when
         final var actualException = Assertions.assertThrows(
-            DomainException.class,
-            () -> Genre.with(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates)
+                DomainException.class,
+                () -> Genre.with(expectedID, expectedName, expectedIsActive, expectedCategories, expectedDates, expectedDates, expectedDates)
         );
 
         // then

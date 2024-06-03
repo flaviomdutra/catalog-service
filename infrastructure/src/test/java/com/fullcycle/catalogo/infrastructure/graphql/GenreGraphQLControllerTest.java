@@ -43,8 +43,8 @@ public class GenreGraphQLControllerTest {
     public void givenDefaultArgumentsWhenCallsListGenresShouldReturn() {
         // given
         final var genres = List.of(
-            ListGenreUseCase.Output.from(Fixture.Genres.business()),
-            ListGenreUseCase.Output.from(Fixture.Genres.tech())
+                ListGenreUseCase.Output.from(Fixture.Genres.business()),
+                ListGenreUseCase.Output.from(Fixture.Genres.tech())
         );
 
         final var expectedGenres = genres.stream().map(GqlGenrePresenter::present).toList();
@@ -57,33 +57,33 @@ public class GenreGraphQLControllerTest {
         final var expectedCategories = Set.of();
 
         when(this.listGenreUseCase.execute(any()))
-            .thenReturn(new Pagination<>(expectedPage, expectedPerPage, genres.size(), genres));
+                .thenReturn(new Pagination<>(expectedPage, expectedPerPage, genres.size(), genres));
 
         final var query = """
-            {
-              genres {
-                id
-                name
-                active
-                categories
-                createdAt
-                updatedAt
-                deletedAt
-              }
-            }
-            """;
+                {
+                  genres {
+                    id
+                    name
+                    active
+                    categories
+                    createdAt
+                    updatedAt
+                    deletedAt
+                  }
+                }
+                """;
 
         // when
         final var res = this.graphql.document(query).execute();
 
         final var actualGenres = res.path("genres")
-            .entityList(GqlGenre.class)
-            .get();
+                .entityList(GqlGenre.class)
+                .get();
 
         // then
         Assertions.assertTrue(
-            actualGenres.size() == expectedGenres.size()
-                && actualGenres.containsAll(expectedGenres)
+                actualGenres.size() == expectedGenres.size()
+                        && actualGenres.containsAll(expectedGenres)
         );
 
         final var capturer = ArgumentCaptor.forClass(ListGenreUseCase.Input.class);
@@ -103,8 +103,8 @@ public class GenreGraphQLControllerTest {
     public void givenCustomArgumentsWhenCallsListGenresShouldReturn() {
         // given
         final var genres = List.of(
-            ListGenreUseCase.Output.from(Fixture.Genres.business()),
-            ListGenreUseCase.Output.from(Fixture.Genres.tech())
+                ListGenreUseCase.Output.from(Fixture.Genres.business()),
+                ListGenreUseCase.Output.from(Fixture.Genres.tech())
         );
 
         final var expectedGenres = genres.stream().map(GqlGenrePresenter::present).toList();
@@ -117,41 +117,41 @@ public class GenreGraphQLControllerTest {
         final var expectedCategories = Set.of("c1");
 
         when(this.listGenreUseCase.execute(any()))
-            .thenReturn(new Pagination<>(expectedPage, expectedPerPage, genres.size(), genres));
+                .thenReturn(new Pagination<>(expectedPage, expectedPerPage, genres.size(), genres));
 
         final var query = """
-            query AllGenres($search: String, $page: Int, $perPage: Int, $sort: String, $direction: String, $categories: [String]) {
-                            
-              genres(search: $search, page: $page, perPage: $perPage, sort: $sort, direction: $direction, categories: $categories) {
-                id
-                name
-                active
-                categories
-                createdAt
-                updatedAt
-                deletedAt
-              }
-            }
-            """;
+                query AllGenres($search: String, $page: Int, $perPage: Int, $sort: String, $direction: String, $categories: [String]) {
+                                
+                  genres(search: $search, page: $page, perPage: $perPage, sort: $sort, direction: $direction, categories: $categories) {
+                    id
+                    name
+                    active
+                    categories
+                    createdAt
+                    updatedAt
+                    deletedAt
+                  }
+                }
+                """;
 
         // when
         final var res = this.graphql.document(query)
-            .variable("search", expectedSearch)
-            .variable("page", expectedPage)
-            .variable("perPage", expectedPerPage)
-            .variable("sort", expectedSort)
-            .variable("direction", expectedDirection)
-            .variable("categories", expectedCategories)
-            .execute();
+                .variable("search", expectedSearch)
+                .variable("page", expectedPage)
+                .variable("perPage", expectedPerPage)
+                .variable("sort", expectedSort)
+                .variable("direction", expectedDirection)
+                .variable("categories", expectedCategories)
+                .execute();
 
         final var actualGenres = res.path("genres")
-            .entityList(GqlGenre.class)
-            .get();
+                .entityList(GqlGenre.class)
+                .get();
 
         // then
         Assertions.assertTrue(
-            actualGenres.size() == expectedGenres.size()
-                && actualGenres.containsAll(expectedGenres)
+                actualGenres.size() == expectedGenres.size()
+                        && actualGenres.containsAll(expectedGenres)
         );
 
         final var capturer = ArgumentCaptor.forClass(ListGenreUseCase.Input.class);
@@ -177,30 +177,30 @@ public class GenreGraphQLControllerTest {
         final var expectedDates = InstantUtils.now();
 
         final var input = Map.of(
-            "id", expectedId,
-            "name", expectedName,
-            "active", String.valueOf(expectedIsActive),
-            "categories", expectedCategories,
-            "createdAt", expectedDates.toString(),
-            "updatedAt", expectedDates.toString(),
-            "deletedAt", expectedDates.toString()
+                "id", expectedId,
+                "name", expectedName,
+                "active", String.valueOf(expectedIsActive),
+                "categories", expectedCategories,
+                "createdAt", expectedDates.toString(),
+                "updatedAt", expectedDates.toString(),
+                "deletedAt", expectedDates.toString()
         );
 
         final var query = """
-            mutation SaveGenre($input: GenreInput!) {
-                genre: saveGenre(input: $input) {
-                    id
+                mutation SaveGenre($input: GenreInput!) {
+                    genre: saveGenre(input: $input) {
+                        id
+                    }
                 }
-            }
-            """;
+                """;
 
         doReturn(new SaveGenreUseCase.Output(expectedId)).when(saveGenreUseCase).execute(any());
 
         // when
         this.graphql.document(query)
-            .variable("input", input)
-            .execute()
-            .path("genre.id").entity(String.class).isEqualTo(expectedId);
+                .variable("input", input)
+                .execute()
+                .path("genre.id").entity(String.class).isEqualTo(expectedId);
 
         // then
         final var capturer = ArgumentCaptor.forClass(SaveGenreUseCase.Input.class);
@@ -227,29 +227,29 @@ public class GenreGraphQLControllerTest {
         final var expectedDates = InstantUtils.now();
 
         final var input = Map.of(
-            "id", expectedId,
-            "name", expectedName,
-            "active", String.valueOf(expectedIsActive),
-            "categories", expectedCategories,
-            "createdAt", expectedDates.toString(),
-            "updatedAt", expectedDates.toString()
+                "id", expectedId,
+                "name", expectedName,
+                "active", String.valueOf(expectedIsActive),
+                "categories", expectedCategories,
+                "createdAt", expectedDates.toString(),
+                "updatedAt", expectedDates.toString()
         );
 
         final var query = """
-            mutation SaveGenre($input: GenreInput!) {
-                genre: saveGenre(input: $input) {
-                    id
+                mutation SaveGenre($input: GenreInput!) {
+                    genre: saveGenre(input: $input) {
+                        id
+                    }
                 }
-            }
-            """;
+                """;
 
         doReturn(new SaveGenreUseCase.Output(expectedId)).when(saveGenreUseCase).execute(any());
 
         // when
         this.graphql.document(query)
-            .variable("input", input)
-            .execute()
-            .path("genre.id").entity(String.class).isEqualTo(expectedId);
+                .variable("input", input)
+                .execute()
+                .path("genre.id").entity(String.class).isEqualTo(expectedId);
 
         // then
         final var capturer = ArgumentCaptor.forClass(SaveGenreUseCase.Input.class);

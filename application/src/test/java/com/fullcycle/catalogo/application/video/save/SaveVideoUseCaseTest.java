@@ -36,11 +36,11 @@ public class SaveVideoUseCaseTest extends UseCaseTest {
         final var expectedId = IdUtils.uniqueId();
         final var expectedTitle = "System Design Interviews";
         final var expectedDescription = """
-            Disclaimer: o estudo de caso apresentado tem fins educacionais e representa nossas opiniões pessoais.
-            Esse vídeo faz parte da Imersão Full Stack && Full Cycle.
-            Para acessar todas as aulas, lives e desafios, acesse:
-            https://imersao.fullcycle.com.br/
-            """;
+                Disclaimer: o estudo de caso apresentado tem fins educacionais e representa nossas opiniões pessoais.
+                Esse vídeo faz parte da Imersão Full Stack && Full Cycle.
+                Para acessar todas as aulas, lives e desafios, acesse:
+                https://imersao.fullcycle.com.br/
+                """;
         final var expectedLaunchedAt = Year.of(2022);
         final var expectedDuration = 120.10;
         final var expectedOpened = false;
@@ -58,28 +58,28 @@ public class SaveVideoUseCaseTest extends UseCaseTest {
         final var expectedThumbnailHalf = "http://thumbhalf";
 
         when(videoGateway.save(any()))
-            .thenAnswer(returnsFirstArg());
+                .thenAnswer(returnsFirstArg());
 
         // when
         final var input = new SaveVideoUseCase.Input(
-            expectedId,
-            expectedTitle,
-            expectedDescription,
-            expectedLaunchedAt.getValue(),
-            expectedDuration,
-            expectedRating.getName(),
-            expectedOpened,
-            expectedPublished,
-            expectedCreatedAt.toString(),
-            expectedUpdatedAt.toString(),
-            expectedVideo,
-            expectedTrailer,
-            expectedBanner,
-            expectedThumbnail,
-            expectedThumbnailHalf,
-            expectedCategories,
-            expectedCastMembers,
-            expectedGenres
+                expectedId,
+                expectedTitle,
+                expectedDescription,
+                expectedLaunchedAt.getValue(),
+                expectedDuration,
+                expectedRating.getName(),
+                expectedOpened,
+                expectedPublished,
+                expectedCreatedAt.toString(),
+                expectedUpdatedAt.toString(),
+                expectedVideo,
+                expectedTrailer,
+                expectedBanner,
+                expectedThumbnail,
+                expectedThumbnailHalf,
+                expectedCategories,
+                expectedCastMembers,
+                expectedGenres
         );
 
         final var actualOutput = this.useCase.execute(input);
@@ -137,11 +137,11 @@ public class SaveVideoUseCaseTest extends UseCaseTest {
         final String expectedId = null;
         final var expectedTitle = "System Design Interviews";
         final var expectedDescription = """
-            Disclaimer: o estudo de caso apresentado tem fins educacionais e representa nossas opiniões pessoais.
-            Esse vídeo faz parte da Imersão Full Stack && Full Cycle.
-            Para acessar todas as aulas, lives e desafios, acesse:
-            https://imersao.fullcycle.com.br/
-            """;
+                Disclaimer: o estudo de caso apresentado tem fins educacionais e representa nossas opiniões pessoais.
+                Esse vídeo faz parte da Imersão Full Stack && Full Cycle.
+                Para acessar todas as aulas, lives e desafios, acesse:
+                https://imersao.fullcycle.com.br/
+                """;
         final var expectedLaunchedAt = Year.of(2022);
         final var expectedDuration = 120.10;
         final var expectedOpened = false;
@@ -163,29 +163,29 @@ public class SaveVideoUseCaseTest extends UseCaseTest {
 
         // when
         final var input = new SaveVideoUseCase.Input(
-            expectedId,
-            expectedTitle,
-            expectedDescription,
-            expectedLaunchedAt.getValue(),
-            expectedDuration,
-            expectedRating.getName(),
-            expectedOpened,
-            expectedPublished,
-            expectedCreatedAt.toString(),
-            expectedUpdatedAt.toString(),
-            expectedVideo,
-            expectedTrailer,
-            expectedBanner,
-            expectedThumbnail,
-            expectedThumbnailHalf,
-            expectedCategories,
-            expectedCastMembers,
-            expectedGenres
+                expectedId,
+                expectedTitle,
+                expectedDescription,
+                expectedLaunchedAt.getValue(),
+                expectedDuration,
+                expectedRating.getName(),
+                expectedOpened,
+                expectedPublished,
+                expectedCreatedAt.toString(),
+                expectedUpdatedAt.toString(),
+                expectedVideo,
+                expectedTrailer,
+                expectedBanner,
+                expectedThumbnail,
+                expectedThumbnailHalf,
+                expectedCategories,
+                expectedCastMembers,
+                expectedGenres
         );
 
         final var actualError = Assertions.assertThrows(
-            DomainException.class,
-            () -> this.useCase.execute(input)
+                DomainException.class,
+                () -> this.useCase.execute(input)
         );
 
         // then

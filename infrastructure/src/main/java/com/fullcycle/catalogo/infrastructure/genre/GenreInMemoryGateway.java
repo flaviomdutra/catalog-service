@@ -45,17 +45,17 @@ public class GenreInMemoryGateway implements GenreGateway {
             return List.of();
         }
         return genreId.stream()
-            .map(this.db::get)
-            .toList();
+                .map(this.db::get)
+                .toList();
     }
 
     @Override
     public Pagination<Genre> findAll(GenreSearchQuery aQuery) {
         return new Pagination<>(
-            aQuery.page(),
-            aQuery.perPage(),
-            this.db.values().size(),
-            this.db.values().stream().toList()
+                aQuery.page(),
+                aQuery.perPage(),
+                this.db.values().size(),
+                this.db.values().stream().toList()
         );
     }
 }

@@ -56,8 +56,8 @@ class CastMemberListenerTest extends AbstractEmbeddedKafkaTest {
 
         // when
         final var actualTopics = admin().listTopics().listings().get(10, TimeUnit.SECONDS).stream()
-            .map(TopicListing::name)
-            .collect(Collectors.toSet());
+                .map(TopicListing::name)
+                .collect(Collectors.toSet());
 
         // then
         Assertions.assertTrue(actualTopics.contains(expectedMainTopic));
@@ -82,7 +82,7 @@ class CastMemberListenerTest extends AbstractEmbeddedKafkaTest {
         final var gabrielEvent = CastMemberEvent.from(gabriel);
 
         final var message =
-            Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(gabrielEvent, gabrielEvent, aSource(), Operation.DELETE)));
+                Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(gabrielEvent, gabrielEvent, aSource(), Operation.DELETE)));
 
         final var latch = new CountDownLatch(5);
 
@@ -122,7 +122,7 @@ class CastMemberListenerTest extends AbstractEmbeddedKafkaTest {
         final var gabrielEvent = CastMemberEvent.from(gabriel);
 
         final var message =
-            Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(gabrielEvent, gabrielEvent, aSource(), Operation.UPDATE)));
+                Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(gabrielEvent, gabrielEvent, aSource(), Operation.UPDATE)));
 
         final var latch = new CountDownLatch(1);
 
@@ -147,7 +147,7 @@ class CastMemberListenerTest extends AbstractEmbeddedKafkaTest {
         final var gabrielEvent = CastMemberEvent.from(gabriel);
 
         final var message =
-            Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(gabrielEvent, null, aSource(), Operation.CREATE)));
+                Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(gabrielEvent, null, aSource(), Operation.CREATE)));
 
         final var latch = new CountDownLatch(1);
 
@@ -172,7 +172,7 @@ class CastMemberListenerTest extends AbstractEmbeddedKafkaTest {
         final var gabrielEvent = CastMemberEvent.from(gabriel);
 
         final var message =
-            Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(null, gabrielEvent, aSource(), Operation.DELETE)));
+                Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(null, gabrielEvent, aSource(), Operation.DELETE)));
 
         final var latch = new CountDownLatch(1);
 

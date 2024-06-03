@@ -28,26 +28,26 @@ class GetAllGenresByIdUseCaseTest extends UseCaseTest {
     public void givenValidIds_whenCallsGetAllById_shouldReturnIt() {
         // given
         final var genres = List.of(
-            Fixture.Genres.business(),
-            Fixture.Genres.tech()
+                Fixture.Genres.business(),
+                Fixture.Genres.tech()
         );
 
         final var expectedItems = genres.stream()
-            .map(GetAllGenresByIdUseCase.Output::new)
-            .toList();
+                .map(GetAllGenresByIdUseCase.Output::new)
+                .toList();
 
         final var expectedIds = genres.stream().map(Genre::id).collect(Collectors.toSet());
 
         when(this.genreGateway.findAllById(any()))
-            .thenReturn(genres);
+                .thenReturn(genres);
 
         // when
         final var actualOutput = this.useCase.execute(new GetAllGenresByIdUseCase.Input(expectedIds));
 
         // then
         Assertions.assertTrue(
-            expectedItems.size() == actualOutput.size() &&
-                expectedItems.containsAll(actualOutput)
+                expectedItems.size() == actualOutput.size() &&
+                        expectedItems.containsAll(actualOutput)
         );
 
         verify(this.genreGateway, times(1)).findAllById(expectedIds);

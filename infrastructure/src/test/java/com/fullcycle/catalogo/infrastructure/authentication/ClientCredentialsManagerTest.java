@@ -41,7 +41,7 @@ class ClientCredentialsManagerTest {
         doReturn(expectedClientSecret).when(keycloakProperties).clientSecret();
 
         doReturn(new AuthenticationResult(expectedAccessToken, expectedRefreshToken))
-            .when(authenticationGateway).login(new ClientCredentialsInput(expectedClientId, expectedClientSecret));
+                .when(authenticationGateway).login(new ClientCredentialsInput(expectedClientId, expectedClientSecret));
 
         // when
         this.manager.refresh();
@@ -65,7 +65,7 @@ class ClientCredentialsManagerTest {
         doReturn(expectedClientSecret).when(keycloakProperties).clientSecret();
 
         doReturn(new AuthenticationResult(expectedAccessToken, expectedRefreshToken))
-            .when(authenticationGateway).refresh(new RefreshTokenInput(expectedClientId, expectedClientSecret, "ref"));
+                .when(authenticationGateway).refresh(new RefreshTokenInput(expectedClientId, expectedClientSecret, "ref"));
 
         // when
         this.manager.refresh();
@@ -91,10 +91,10 @@ class ClientCredentialsManagerTest {
         doReturn(expectedClientSecret).when(keycloakProperties).clientSecret();
 
         doThrow(InternalErrorException.with("BLA!"))
-            .when(authenticationGateway).refresh(new RefreshTokenInput(expectedClientId, expectedClientSecret, "ref"));
+                .when(authenticationGateway).refresh(new RefreshTokenInput(expectedClientId, expectedClientSecret, "ref"));
 
         doReturn(new AuthenticationResult(expectedAccessToken, expectedRefreshToken))
-            .when(authenticationGateway).login(new ClientCredentialsInput(expectedClientId, expectedClientSecret));
+                .when(authenticationGateway).login(new ClientCredentialsInput(expectedClientId, expectedClientSecret));
 
         // when
         this.manager.refresh();

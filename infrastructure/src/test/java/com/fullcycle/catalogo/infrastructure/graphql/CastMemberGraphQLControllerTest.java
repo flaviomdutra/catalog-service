@@ -44,8 +44,8 @@ public class CastMemberGraphQLControllerTest {
     public void givenDefaultArgumentsWhenCallsListCastMembersShouldReturn() {
         // given
         final var castMembers = List.of(
-            ListCastMembersOutput.from(Fixture.CastMembers.gabriel()),
-            ListCastMembersOutput.from(Fixture.CastMembers.wesley())
+                ListCastMembersOutput.from(Fixture.CastMembers.gabriel()),
+                ListCastMembersOutput.from(Fixture.CastMembers.wesley())
         );
 
         final var expectedMembers = castMembers.stream().map(GqlCastMemberPresenter::present).toList();
@@ -57,31 +57,31 @@ public class CastMemberGraphQLControllerTest {
         final var expectedSearch = "";
 
         when(this.listCastMemberUseCase.execute(any()))
-            .thenReturn(new Pagination<>(expectedPage, expectedPerPage, castMembers.size(), castMembers));
+                .thenReturn(new Pagination<>(expectedPage, expectedPerPage, castMembers.size(), castMembers));
 
         final var query = """
-            {
-              castMembers {
-                id
-                name
-                type
-                createdAt
-                updatedAt
-              }
-            }
-            """;
+                {
+                  castMembers {
+                    id
+                    name
+                    type
+                    createdAt
+                    updatedAt
+                  }
+                }
+                """;
 
         // when
         final var res = this.graphql.document(query).execute();
 
         final var actualCategories = res.path("castMembers")
-            .entityList(GqlCastMember.class)
-            .get();
+                .entityList(GqlCastMember.class)
+                .get();
 
         // then
         Assertions.assertTrue(
-            actualCategories.size() == expectedMembers.size()
-                && actualCategories.containsAll(expectedMembers)
+                actualCategories.size() == expectedMembers.size()
+                        && actualCategories.containsAll(expectedMembers)
         );
 
         final var capturer = ArgumentCaptor.forClass(CastMemberSearchQuery.class);
@@ -100,8 +100,8 @@ public class CastMemberGraphQLControllerTest {
     public void givenCustomArgumentsWhenCallsListCastMembersShouldReturn() {
         // given
         final var castMembers = List.of(
-            ListCastMembersOutput.from(Fixture.CastMembers.gabriel()),
-            ListCastMembersOutput.from(Fixture.CastMembers.wesley())
+                ListCastMembersOutput.from(Fixture.CastMembers.gabriel()),
+                ListCastMembersOutput.from(Fixture.CastMembers.wesley())
         );
 
         final var expectedMembers = castMembers.stream().map(GqlCastMemberPresenter::present).toList();
@@ -113,38 +113,38 @@ public class CastMemberGraphQLControllerTest {
         final var expectedSearch = "asd";
 
         when(this.listCastMemberUseCase.execute(any()))
-            .thenReturn(new Pagination<>(expectedPage, expectedPerPage, castMembers.size(), castMembers));
+                .thenReturn(new Pagination<>(expectedPage, expectedPerPage, castMembers.size(), castMembers));
 
         final var query = """
-            query AllCastMembers($search: String, $page: Int, $perPage: Int, $sort: String, $direction: String) {
-                            
-              castMembers(search: $search, page: $page, perPage: $perPage, sort: $sort, direction: $direction) {
-                id
-                name
-                type
-                createdAt
-                updatedAt
-              }
-            }
-            """;
+                query AllCastMembers($search: String, $page: Int, $perPage: Int, $sort: String, $direction: String) {
+                                
+                  castMembers(search: $search, page: $page, perPage: $perPage, sort: $sort, direction: $direction) {
+                    id
+                    name
+                    type
+                    createdAt
+                    updatedAt
+                  }
+                }
+                """;
 
         // when
         final var res = this.graphql.document(query)
-            .variable("search", expectedSearch)
-            .variable("page", expectedPage)
-            .variable("perPage", expectedPerPage)
-            .variable("sort", expectedSort)
-            .variable("direction", expectedDirection)
-            .execute();
+                .variable("search", expectedSearch)
+                .variable("page", expectedPage)
+                .variable("perPage", expectedPerPage)
+                .variable("sort", expectedSort)
+                .variable("direction", expectedDirection)
+                .execute();
 
         final var actualCategories = res.path("castMembers")
-            .entityList(GqlCastMember.class)
-            .get();
+                .entityList(GqlCastMember.class)
+                .get();
 
         // then
         Assertions.assertTrue(
-            actualCategories.size() == expectedMembers.size()
-                && actualCategories.containsAll(expectedMembers)
+                actualCategories.size() == expectedMembers.size()
+                        && actualCategories.containsAll(expectedMembers)
         );
 
         final var capturer = ArgumentCaptor.forClass(CastMemberSearchQuery.class);
@@ -169,36 +169,36 @@ public class CastMemberGraphQLControllerTest {
         final var expectedUpdatedAt = InstantUtils.now();
 
         final var input = Map.of(
-            "id", expectedId,
-            "name", expectedName,
-            "type", expectedType.name(),
-            "createdAt", expectedCreatedAt.toString(),
-            "updatedAt", expectedUpdatedAt.toString()
+                "id", expectedId,
+                "name", expectedName,
+                "type", expectedType.name(),
+                "createdAt", expectedCreatedAt.toString(),
+                "updatedAt", expectedUpdatedAt.toString()
         );
 
         final var query = """
-            mutation SaveCastMember($input: CastMemberInput!) {
-                castMember: saveCastMember(input: $input) {
-                    id
-                    name
-                    type
-                    createdAt
-                    updatedAt
+                mutation SaveCastMember($input: CastMemberInput!) {
+                    castMember: saveCastMember(input: $input) {
+                        id
+                        name
+                        type
+                        createdAt
+                        updatedAt
+                    }
                 }
-            }
-            """;
+                """;
 
         doAnswer(returnsFirstArg()).when(saveCastMemberUseCase).execute(any());
 
         // when
         this.graphql.document(query)
-            .variable("input", input)
-            .execute()
-            .path("castMember.id").entity(String.class).isEqualTo(expectedId)
-            .path("castMember.name").entity(String.class).isEqualTo(expectedName)
-            .path("castMember.type").entity(CastMemberType.class).isEqualTo(expectedType)
-            .path("castMember.createdAt").entity(Instant.class).isEqualTo(expectedCreatedAt)
-            .path("castMember.updatedAt").entity(Instant.class).isEqualTo(expectedUpdatedAt);
+                .variable("input", input)
+                .execute()
+                .path("castMember.id").entity(String.class).isEqualTo(expectedId)
+                .path("castMember.name").entity(String.class).isEqualTo(expectedName)
+                .path("castMember.type").entity(CastMemberType.class).isEqualTo(expectedType)
+                .path("castMember.createdAt").entity(Instant.class).isEqualTo(expectedCreatedAt)
+                .path("castMember.updatedAt").entity(Instant.class).isEqualTo(expectedUpdatedAt);
 
         // then
         final var capturer = ArgumentCaptor.forClass(CastMember.class);

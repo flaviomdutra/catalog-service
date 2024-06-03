@@ -21,8 +21,8 @@ public class CastMemberGraphQLController {
     private final SaveCastMemberUseCase saveCastMemberUseCase;
 
     public CastMemberGraphQLController(
-        final ListCastMemberUseCase listCastMemberUseCase,
-        final SaveCastMemberUseCase saveCastMemberUseCase
+            final ListCastMemberUseCase listCastMemberUseCase,
+            final SaveCastMemberUseCase saveCastMemberUseCase
     ) {
         this.listCastMemberUseCase = Objects.requireNonNull(listCastMemberUseCase);
         this.saveCastMemberUseCase = Objects.requireNonNull(saveCastMemberUseCase);
@@ -31,18 +31,18 @@ public class CastMemberGraphQLController {
     @QueryMapping
 //    @Secured({Roles.ROLE_ADMIN, Roles.ROLE_SUBSCRIBER, Roles.ROLE_CAST_MEMBERS})
     public List<GqlCastMember> castMembers(
-        @Argument final String search,
-        @Argument final int page,
-        @Argument final int perPage,
-        @Argument final String sort,
-        @Argument final String direction
+            @Argument final String search,
+            @Argument final int page,
+            @Argument final int perPage,
+            @Argument final String sort,
+            @Argument final String direction
     ) {
         final var query =
-            new CastMemberSearchQuery(page, perPage, search, sort, direction);
+                new CastMemberSearchQuery(page, perPage, search, sort, direction);
 
         return this.listCastMemberUseCase.execute(query)
-            .map(GqlCastMemberPresenter::present)
-            .data();
+                .map(GqlCastMemberPresenter::present)
+                .data();
     }
 
     @MutationMapping

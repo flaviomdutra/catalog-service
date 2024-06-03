@@ -27,8 +27,8 @@ import java.util.List;
 @ActiveProfiles("test-integration")
 @AutoConfigureWireMock(port = 0)
 @EnableAutoConfiguration(exclude = {
-    ElasticsearchRepositoriesAutoConfiguration.class,
-    KafkaAutoConfiguration.class,
+        ElasticsearchRepositoriesAutoConfiguration.class,
+        KafkaAutoConfiguration.class,
 })
 @SpringBootTest(classes = {WebServerConfig.class, IntegrationTestConfiguration.class})
 @Tag("integrationTest")

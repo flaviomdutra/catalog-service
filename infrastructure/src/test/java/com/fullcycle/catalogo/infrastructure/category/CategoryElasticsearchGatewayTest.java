@@ -123,7 +123,7 @@ public class CategoryElasticsearchGatewayTest extends AbstractElasticsearchTest 
         final var expectedTotal = 0;
 
         final var aQuery =
-            new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+                new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         // when
         final var actualOutput = this.categoryGateway.findAll(aQuery);
@@ -137,16 +137,16 @@ public class CategoryElasticsearchGatewayTest extends AbstractElasticsearchTest 
 
     @ParameterizedTest
     @CsvSource({
-        "aul,0,10,1,1,Aulas",
-        "liv,0,10,1,1,Lives"
+            "aul,0,10,1,1,Aulas",
+            "liv,0,10,1,1,Lives"
     })
     public void givenValidTerm_whenCallsFindAll_shouldReturnElementsFiltered(
-        final String expectedTerms,
-        final int expectedPage,
-        final int expectedPerPage,
-        final int expectedItemsCount,
-        final long expectedTotal,
-        final String expectedName
+            final String expectedTerms,
+            final int expectedPage,
+            final int expectedPerPage,
+            final int expectedItemsCount,
+            final long expectedTotal,
+            final String expectedName
     ) {
         // given
         mockCategories();
@@ -155,7 +155,7 @@ public class CategoryElasticsearchGatewayTest extends AbstractElasticsearchTest 
         final var expectedDirection = "asc";
 
         final var aQuery =
-            new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+                new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         // when
         final var actualOutput = this.categoryGateway.findAll(aQuery);
@@ -170,19 +170,19 @@ public class CategoryElasticsearchGatewayTest extends AbstractElasticsearchTest 
 
     @ParameterizedTest
     @CsvSource({
-        "name,asc,0,10,3,3,Aulas",
-        "name,desc,0,10,3,3,Talks",
-        "created_at,asc,0,10,3,3,Aulas",
-        "created_at,desc,0,10,3,3,Lives",
+            "name,asc,0,10,3,3,Aulas",
+            "name,desc,0,10,3,3,Talks",
+            "created_at,asc,0,10,3,3,Aulas",
+            "created_at,desc,0,10,3,3,Lives",
     })
     public void givenValidSortAndDirection_whenCallsFindAll_shouldReturnElementsSorted(
-        final String expectedSort,
-        final String expectedDirection,
-        final int expectedPage,
-        final int expectedPerPage,
-        final int expectedItemsCount,
-        final long expectedTotal,
-        final String expectedName
+            final String expectedSort,
+            final String expectedDirection,
+            final int expectedPage,
+            final int expectedPerPage,
+            final int expectedItemsCount,
+            final long expectedTotal,
+            final String expectedName
     ) {
         // given
         mockCategories();
@@ -190,7 +190,7 @@ public class CategoryElasticsearchGatewayTest extends AbstractElasticsearchTest 
         final var expectedTerms = "";
 
         final var aQuery =
-            new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+                new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         // when
         final var actualOutput = this.categoryGateway.findAll(aQuery);
@@ -205,17 +205,17 @@ public class CategoryElasticsearchGatewayTest extends AbstractElasticsearchTest 
 
     @ParameterizedTest
     @CsvSource({
-        "0,1,1,3,Aulas",
-        "1,1,1,3,Lives",
-        "2,1,1,3,Talks",
-        "3,1,0,3,",
+            "0,1,1,3,Aulas",
+            "1,1,1,3,Lives",
+            "2,1,1,3,Talks",
+            "3,1,0,3,",
     })
     public void givenValidPage_whenCallsFindAll_shouldReturnElementsPaged(
-        final int expectedPage,
-        final int expectedPerPage,
-        final int expectedItemsCount,
-        final long expectedTotal,
-        final String expectedName
+            final int expectedPage,
+            final int expectedPerPage,
+            final int expectedItemsCount,
+            final long expectedTotal,
+            final String expectedName
     ) {
         // given
         mockCategories();
@@ -225,7 +225,7 @@ public class CategoryElasticsearchGatewayTest extends AbstractElasticsearchTest 
         final var expectedDirection = "asc";
 
         final var aQuery =
-            new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+                new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         // when
         final var actualOutput = this.categoryGateway.findAll(aQuery);

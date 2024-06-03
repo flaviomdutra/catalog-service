@@ -26,7 +26,7 @@ public class DeleteCastMemberUseCaseTest extends UseCaseTest {
         final var expectedId = aulas.id();
 
         doNothing()
-            .when(this.castMemberGateway).deleteById(anyString());
+                .when(this.castMemberGateway).deleteById(anyString());
 
         // when
         Assertions.assertDoesNotThrow(() -> this.useCase.execute(expectedId));

@@ -15,11 +15,11 @@ import java.util.Collection;
 
 @ActiveProfiles("test-integration")
 @ComponentScan(
-    basePackages = "com.fullcycle.catalogo",
-    useDefaultFilters = false,
-    includeFilters = {
-        @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*ElasticsearchGateway")
-    }
+        basePackages = "com.fullcycle.catalogo",
+        useDefaultFilters = false,
+        includeFilters = {
+                @ComponentScan.Filter(type = FilterType.REGEX, pattern = ".*ElasticsearchGateway")
+        }
 )
 @DataElasticsearchTest
 @ImportTestcontainers(ElasticsearchTestContainer.class)

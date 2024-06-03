@@ -18,6 +18,6 @@ public class ListCastMemberUseCase extends UseCase<CastMemberSearchQuery, Pagina
     @Override
     public Pagination<ListCastMembersOutput> execute(final CastMemberSearchQuery aQuery) {
         return this.castMemberGateway.findAll(aQuery)
-            .map(ListCastMembersOutput::from);
+                .map(ListCastMembersOutput::from);
     }
 }

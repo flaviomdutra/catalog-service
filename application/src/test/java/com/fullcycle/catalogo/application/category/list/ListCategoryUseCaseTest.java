@@ -27,13 +27,13 @@ public class ListCategoryUseCaseTest extends UseCaseTest {
     public void givenValidQuery_whenCallsListCategories_shouldReturnCategories() {
         // given
         final var categories = List.of(
-            Fixture.Categories.lives(),
-            Fixture.Categories.aulas()
+                Fixture.Categories.lives(),
+                Fixture.Categories.aulas()
         );
 
         final var expectedItems = categories.stream()
-            .map(ListCategoryOutput::from)
-            .toList();
+                .map(ListCategoryOutput::from)
+                .toList();
 
         final var expectedPage = 0;
         final var expectedPerPage = 10;
@@ -43,13 +43,13 @@ public class ListCategoryUseCaseTest extends UseCaseTest {
         final var expectedItemsCount = 2;
 
         final var aQuery =
-            new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+                new CategorySearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         final var pagination =
-            new Pagination<>(expectedPage, expectedPerPage, categories.size(), categories);
+                new Pagination<>(expectedPage, expectedPerPage, categories.size(), categories);
 
         when(this.categoryGateway.findAll(any()))
-            .thenReturn(pagination);
+                .thenReturn(pagination);
 
         // when
         final var actualOutput = this.useCase.execute(aQuery);
@@ -59,8 +59,8 @@ public class ListCategoryUseCaseTest extends UseCaseTest {
         Assertions.assertEquals(expectedPerPage, actualOutput.meta().perPage());
         Assertions.assertEquals(expectedItemsCount, actualOutput.meta().total());
         Assertions.assertTrue(
-            expectedItems.size() == actualOutput.data().size() &&
-                expectedItems.containsAll(actualOutput.data())
+                expectedItems.size() == actualOutput.data().size() &&
+                        expectedItems.containsAll(actualOutput.data())
         );
     }
 }

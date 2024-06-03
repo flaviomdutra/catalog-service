@@ -60,8 +60,8 @@ public class CategoryListenerTest extends AbstractEmbeddedKafkaTest {
 
         // when
         final var actualTopics = admin().listTopics().listings().get(10, TimeUnit.SECONDS).stream()
-            .map(TopicListing::name)
-            .collect(Collectors.toSet());
+                .map(TopicListing::name)
+                .collect(Collectors.toSet());
 
         // then
         Assertions.assertTrue(actualTopics.contains(expectedMainTopic));
@@ -86,7 +86,7 @@ public class CategoryListenerTest extends AbstractEmbeddedKafkaTest {
         final var aulasEvent = new CategoryEvent(aulas.id());
 
         final var message =
-            Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(aulasEvent, aulasEvent, aSource(), Operation.DELETE)));
+                Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(aulasEvent, aulasEvent, aSource(), Operation.DELETE)));
 
         final var latch = new CountDownLatch(5);
 
@@ -124,7 +124,7 @@ public class CategoryListenerTest extends AbstractEmbeddedKafkaTest {
         final var aulasEvent = new CategoryEvent(aulas.id());
 
         final var message =
-            Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(aulasEvent, aulasEvent, aSource(), Operation.UPDATE)));
+                Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(aulasEvent, aulasEvent, aSource(), Operation.UPDATE)));
 
         final var latch = new CountDownLatch(1);
 
@@ -153,7 +153,7 @@ public class CategoryListenerTest extends AbstractEmbeddedKafkaTest {
         final var aulasEvent = new CategoryEvent(aulas.id());
 
         final var message =
-            Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(aulasEvent, null, aSource(), Operation.CREATE)));
+                Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(aulasEvent, null, aSource(), Operation.CREATE)));
 
         final var latch = new CountDownLatch(1);
 
@@ -182,7 +182,7 @@ public class CategoryListenerTest extends AbstractEmbeddedKafkaTest {
         final var aulasEvent = new CategoryEvent(aulas.id());
 
         final var message =
-            Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(null, aulasEvent, aSource(), Operation.DELETE)));
+                Json.writeValueAsString(new MessageValue<>(new ValuePayload<>(null, aulasEvent, aSource(), Operation.DELETE)));
 
         final var latch = new CountDownLatch(1);
 

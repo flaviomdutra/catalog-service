@@ -35,26 +35,26 @@ public class CategoryRestClientTest extends AbstractRestClientTest {
         final var aulas = Fixture.Categories.aulas();
 
         final var responseBody = writeValueAsString(new CategoryDTO(
-            aulas.id(),
-            aulas.name(),
-            aulas.description(),
-            aulas.active(),
-            aulas.createdAt(),
-            aulas.updatedAt(),
-            aulas.deletedAt()
+                aulas.id(),
+                aulas.name(),
+                aulas.description(),
+                aulas.active(),
+                aulas.createdAt(),
+                aulas.updatedAt(),
+                aulas.deletedAt()
         ));
 
         final var expectedToken = "access-123";
         doReturn(expectedToken).when(credentialsManager).retrieve();
 
         stubFor(
-            get(urlPathEqualTo("/api/categories/%s".formatted(aulas.id())))
-                .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
-                .willReturn(aResponse()
-                    .withStatus(200)
-                    .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .withBody(responseBody)
-                )
+                get(urlPathEqualTo("/api/categories/%s".formatted(aulas.id())))
+                        .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
+                        .willReturn(aResponse()
+                                .withStatus(200)
+                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .withBody(responseBody)
+                        )
         );
 
         // when
@@ -78,26 +78,26 @@ public class CategoryRestClientTest extends AbstractRestClientTest {
         final var aulas = Fixture.Categories.aulas();
 
         final var responseBody = writeValueAsString(new CategoryDTO(
-            aulas.id(),
-            aulas.name(),
-            aulas.description(),
-            aulas.active(),
-            aulas.createdAt(),
-            aulas.updatedAt(),
-            aulas.deletedAt()
+                aulas.id(),
+                aulas.name(),
+                aulas.description(),
+                aulas.active(),
+                aulas.createdAt(),
+                aulas.updatedAt(),
+                aulas.deletedAt()
         ));
 
         final var expectedToken = "access-123";
         doReturn(expectedToken).when(credentialsManager).retrieve();
 
         stubFor(
-            get(urlPathEqualTo("/api/categories/%s".formatted(aulas.id())))
-                .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
-                .willReturn(aResponse()
-                    .withStatus(200)
-                    .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .withBody(responseBody)
-                )
+                get(urlPathEqualTo("/api/categories/%s".formatted(aulas.id())))
+                        .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
+                        .willReturn(aResponse()
+                                .withStatus(200)
+                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .withBody(responseBody)
+                        )
         );
 
         // when
@@ -133,13 +133,13 @@ public class CategoryRestClientTest extends AbstractRestClientTest {
         doReturn(expectedToken).when(credentialsManager).retrieve();
 
         stubFor(
-            get(urlPathEqualTo("/api/categories/%s".formatted(expectedId)))
-                .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
-                .willReturn(aResponse()
-                    .withStatus(500)
-                    .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .withBody(responseBody)
-                )
+                get(urlPathEqualTo("/api/categories/%s".formatted(expectedId)))
+                        .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
+                        .willReturn(aResponse()
+                                .withStatus(500)
+                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .withBody(responseBody)
+                        )
         );
 
         // when
@@ -162,13 +162,13 @@ public class CategoryRestClientTest extends AbstractRestClientTest {
         doReturn(expectedToken).when(credentialsManager).retrieve();
 
         stubFor(
-            get(urlPathEqualTo("/api/categories/%s".formatted(expectedId)))
-                .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
-                .willReturn(aResponse()
-                    .withStatus(404)
-                    .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .withBody(responseBody)
-                )
+                get(urlPathEqualTo("/api/categories/%s".formatted(expectedId)))
+                        .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
+                        .willReturn(aResponse()
+                                .withStatus(404)
+                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .withBody(responseBody)
+                        )
         );
 
         // when
@@ -188,27 +188,27 @@ public class CategoryRestClientTest extends AbstractRestClientTest {
         final var expectedErrorMessage = "Timeout observed from categories [resourceId:%s]".formatted(aulas.id());
 
         final var responseBody = writeValueAsString(new CategoryDTO(
-            aulas.id(),
-            aulas.name(),
-            aulas.description(),
-            aulas.active(),
-            aulas.createdAt(),
-            aulas.updatedAt(),
-            aulas.deletedAt()
+                aulas.id(),
+                aulas.name(),
+                aulas.description(),
+                aulas.active(),
+                aulas.createdAt(),
+                aulas.updatedAt(),
+                aulas.deletedAt()
         ));
 
         final var expectedToken = "access-123";
         doReturn(expectedToken).when(credentialsManager).retrieve();
 
         stubFor(
-            get(urlPathEqualTo("/api/categories/%s".formatted(aulas.id())))
-                .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
-                .willReturn(aResponse()
-                    .withStatus(200)
-                    .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .withFixedDelay(600)
-                    .withBody(responseBody)
-                )
+                get(urlPathEqualTo("/api/categories/%s".formatted(aulas.id())))
+                        .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
+                        .willReturn(aResponse()
+                                .withStatus(200)
+                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .withFixedDelay(600)
+                                .withBody(responseBody)
+                        )
         );
 
         // when
@@ -265,13 +265,13 @@ public class CategoryRestClientTest extends AbstractRestClientTest {
         doReturn(expectedToken).when(credentialsManager).retrieve();
 
         stubFor(
-            get(urlPathEqualTo("/api/categories/%s".formatted(expectedId)))
-                .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
-                .willReturn(aResponse()
-                    .withStatus(500)
-                    .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .withBody(responseBody)
-                )
+                get(urlPathEqualTo("/api/categories/%s".formatted(expectedId)))
+                        .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
+                        .willReturn(aResponse()
+                                .withStatus(500)
+                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .withBody(responseBody)
+                        )
         );
 
         // when

@@ -35,8 +35,8 @@ public class CategoryElasticsearchGateway implements CategoryGateway {
     private final SearchOperations searchOperations;
 
     public CategoryElasticsearchGateway(
-        final CategoryRepository categoryRepository,
-        final SearchOperations searchOperations
+            final CategoryRepository categoryRepository,
+            final SearchOperations searchOperations
     ) {
         this.categoryRepository = Objects.requireNonNull(categoryRepository);
         this.searchOperations = Objects.requireNonNull(searchOperations);
@@ -56,7 +56,7 @@ public class CategoryElasticsearchGateway implements CategoryGateway {
     @Override
     public Optional<Category> findById(final String anId) {
         return this.categoryRepository.findById(anId)
-            .map(CategoryDocument::toCategory);
+                .map(CategoryDocument::toCategory);
     }
 
     @Override
@@ -65,8 +65,8 @@ public class CategoryElasticsearchGateway implements CategoryGateway {
             return List.of();
         }
         return StreamSupport.stream(this.categoryRepository.findAllById(ids).spliterator(), false)
-            .map(CategoryDocument::toCategory)
-            .toList();
+                .map(CategoryDocument::toCategory)
+                .toList();
     }
 
     @Override
@@ -81,7 +81,7 @@ public class CategoryElasticsearchGateway implements CategoryGateway {
         final Query query;
         if (StringUtils.isNotEmpty(terms)) {
             final var criteria = where("name").contains(terms)
-                .or(where("description").contains(terms));
+                    .or(where("description").contains(terms));
 
             query = new CriteriaQuery(criteria, page);
         } else {
@@ -93,9 +93,9 @@ public class CategoryElasticsearchGateway implements CategoryGateway {
         final var total = res.getTotalHits();
 
         final var categories = res.stream()
-            .map(SearchHit::getContent)
-            .map(CategoryDocument::toCategory)
-            .toList();
+                .map(SearchHit::getContent)
+                .map(CategoryDocument::toCategory)
+                .toList();
 
         return new Pagination<>(currentPage, perPage, total, categories);
     }

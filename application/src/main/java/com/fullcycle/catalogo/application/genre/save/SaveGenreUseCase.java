@@ -25,13 +25,13 @@ public class SaveGenreUseCase extends UseCase<SaveGenreUseCase.Input, SaveGenreU
         }
 
         final var aGenre = Genre.with(
-            input.id(),
-            input.name(),
-            input.active(),
-            input.categories(),
-            input.createdAt(),
-            input.updatedAt(),
-            input.deletedAt()
+                input.id(),
+                input.name(),
+                input.active(),
+                input.categories(),
+                input.createdAt(),
+                input.updatedAt(),
+                input.deletedAt()
         );
 
         this.genreGateway.save(aGenre);
@@ -40,13 +40,13 @@ public class SaveGenreUseCase extends UseCase<SaveGenreUseCase.Input, SaveGenreU
     }
 
     public record Input(
-        String id,
-        String name,
-        boolean active,
-        Set<String> categories,
-        Instant createdAt,
-        Instant updatedAt,
-        Instant deletedAt
+            String id,
+            String name,
+            boolean active,
+            Set<String> categories,
+            Instant createdAt,
+            Instant updatedAt,
+            Instant deletedAt
     ) {
 
     }

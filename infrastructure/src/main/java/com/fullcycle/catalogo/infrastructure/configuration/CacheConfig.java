@@ -16,11 +16,11 @@ public class CacheConfig {
     @Bean
     @ConditionalOnProperty(name = "cache.type", havingValue = "cache2k")
     Cache2kBuilderCustomizer cache2kBuilderCustomizer(
-        @Value("${cache.max-entries}") final int maxEntries,
-        @Value("${cache.ttl}") final int ttl
+            @Value("${cache.max-entries}") final int maxEntries,
+            @Value("${cache.ttl}") final int ttl
     ) {
         return builder -> builder
-            .entryCapacity(maxEntries)
-            .expireAfterWrite(ttl, TimeUnit.SECONDS);
+                .entryCapacity(maxEntries)
+                .expireAfterWrite(ttl, TimeUnit.SECONDS);
     }
 }

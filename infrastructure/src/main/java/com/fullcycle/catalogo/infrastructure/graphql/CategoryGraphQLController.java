@@ -21,8 +21,8 @@ public class CategoryGraphQLController {
     private final SaveCategoryUseCase saveCategoryUseCase;
 
     public CategoryGraphQLController(
-        final ListCategoryUseCase listCategoryUseCase,
-        final SaveCategoryUseCase saveCategoryUseCase
+            final ListCategoryUseCase listCategoryUseCase,
+            final SaveCategoryUseCase saveCategoryUseCase
     ) {
         this.listCategoryUseCase = Objects.requireNonNull(listCategoryUseCase);
         this.saveCategoryUseCase = Objects.requireNonNull(saveCategoryUseCase);
@@ -31,19 +31,19 @@ public class CategoryGraphQLController {
     @QueryMapping
 //    @Secured({Roles.ROLE_ADMIN, Roles.ROLE_SUBSCRIBER, Roles.ROLE_CATEGORIES})
     public List<GqlCategory> categories(
-        @Argument final String search,
-        @Argument final int page,
-        @Argument final int perPage,
-        @Argument final String sort,
-        @Argument final String direction
+            @Argument final String search,
+            @Argument final int page,
+            @Argument final int perPage,
+            @Argument final String sort,
+            @Argument final String direction
     ) {
 
         final var aQuery =
-            new CategorySearchQuery(page, perPage, search, sort, direction);
+                new CategorySearchQuery(page, perPage, search, sort, direction);
 
         return this.listCategoryUseCase.execute(aQuery)
-            .map(GqlCategoryPresenter::present)
-            .data();
+                .map(GqlCategoryPresenter::present)
+                .data();
     }
 
     @MutationMapping

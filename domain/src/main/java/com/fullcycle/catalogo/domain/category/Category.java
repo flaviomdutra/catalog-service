@@ -16,13 +16,13 @@ public class Category {
     private final Instant deletedAt;
 
     private Category(
-        final String anId,
-        final String aName,
-        final String aDescription,
-        final boolean isActive,
-        final Instant aCreationDate,
-        final Instant aUpdateDate,
-        final Instant aDeleteDate
+            final String anId,
+            final String aName,
+            final String aDescription,
+            final boolean isActive,
+            final Instant aCreationDate,
+            final Instant aUpdateDate,
+            final Instant aDeleteDate
     ) {
         this.id = anId;
         this.name = aName;
@@ -34,34 +34,34 @@ public class Category {
     }
 
     public static Category with(
-        final String anId,
-        final String name,
-        final String description,
-        final boolean active,
-        final Instant createdAt,
-        final Instant updatedAt,
-        final Instant deletedAt
+            final String anId,
+            final String name,
+            final String description,
+            final boolean active,
+            final Instant createdAt,
+            final Instant updatedAt,
+            final Instant deletedAt
     ) {
         return new Category(
-            anId,
-            name,
-            description,
-            active,
-            createdAt,
-            updatedAt,
-            deletedAt
+                anId,
+                name,
+                description,
+                active,
+                createdAt,
+                updatedAt,
+                deletedAt
         );
     }
 
     public static Category with(final Category aCategory) {
         return with(
-            aCategory.id(),
-            aCategory.name(),
-            aCategory.description(),
-            aCategory.active(),
-            aCategory.createdAt(),
-            aCategory.updatedAt(),
-            aCategory.deletedAt()
+                aCategory.id(),
+                aCategory.name(),
+                aCategory.description(),
+                aCategory.active(),
+                aCategory.createdAt(),
+                aCategory.updatedAt(),
+                aCategory.deletedAt()
         );
     }
 

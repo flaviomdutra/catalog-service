@@ -27,13 +27,13 @@ public class ListCastMemberUseCaseTest extends UseCaseTest {
     public void givenValidQuery_whenCallsListCastMembers_shouldReturnIt() {
         // given
         final var members = List.of(
-            Fixture.CastMembers.gabriel(),
-            Fixture.CastMembers.wesley()
+                Fixture.CastMembers.gabriel(),
+                Fixture.CastMembers.wesley()
         );
 
         final var expectedItems = members.stream()
-            .map(ListCastMembersOutput::from)
-            .toList();
+                .map(ListCastMembersOutput::from)
+                .toList();
 
         final var expectedPage = 0;
         final var expectedPerPage = 10;
@@ -43,13 +43,13 @@ public class ListCastMemberUseCaseTest extends UseCaseTest {
         final var expectedItemsCount = 2;
 
         final var aQuery =
-            new CastMemberSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+                new CastMemberSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         final var pagination =
-            new Pagination<>(expectedPage, expectedPerPage, members.size(), members);
+                new Pagination<>(expectedPage, expectedPerPage, members.size(), members);
 
         when(this.castMemberGateway.findAll(any()))
-            .thenReturn(pagination);
+                .thenReturn(pagination);
 
         // when
         final var actualOutput = this.useCase.execute(aQuery);
@@ -59,8 +59,8 @@ public class ListCastMemberUseCaseTest extends UseCaseTest {
         Assertions.assertEquals(expectedPerPage, actualOutput.meta().perPage());
         Assertions.assertEquals(expectedItemsCount, actualOutput.meta().total());
         Assertions.assertTrue(
-            expectedItems.size() == actualOutput.data().size() &&
-                expectedItems.containsAll(actualOutput.data())
+                expectedItems.size() == actualOutput.data().size() &&
+                        expectedItems.containsAll(actualOutput.data())
         );
     }
 }

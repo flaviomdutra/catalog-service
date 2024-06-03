@@ -27,13 +27,13 @@ public class ListVideoUseCaseTest extends UseCaseTest {
     public void givenValidQuery_whenCallsListVideos_shouldReturnIt() {
         // given
         final var videos = List.of(
-            Fixture.Videos.systemDesign(),
-            Fixture.Videos.java21()
+                Fixture.Videos.systemDesign(),
+                Fixture.Videos.java21()
         );
 
         final var expectedItems = videos.stream()
-            .map(ListVideoUseCase.Output::from)
-            .toList();
+                .map(ListVideoUseCase.Output::from)
+                .toList();
 
         final var expectedPage = 0;
         final var expectedPerPage = 10;
@@ -48,23 +48,23 @@ public class ListVideoUseCaseTest extends UseCaseTest {
         final var expectedGenres = Set.of("c1");
 
         final var aQuery = new ListVideoUseCase.Input(
-            expectedPage,
-            expectedPerPage,
-            expectedTerms,
-            expectedSort,
-            expectedDirection,
-            expectedRating,
-            expectedYear,
-            expectedCategories,
-            expectedCastMembers,
-            expectedGenres
+                expectedPage,
+                expectedPerPage,
+                expectedTerms,
+                expectedSort,
+                expectedDirection,
+                expectedRating,
+                expectedYear,
+                expectedCategories,
+                expectedCastMembers,
+                expectedGenres
         );
 
         final var pagination =
-            new Pagination<>(expectedPage, expectedPerPage, videos.size(), videos);
+                new Pagination<>(expectedPage, expectedPerPage, videos.size(), videos);
 
         when(this.videoGateway.findAll(any()))
-            .thenReturn(pagination);
+                .thenReturn(pagination);
 
         // when
         final var actualOutput = this.useCase.execute(aQuery);
@@ -74,8 +74,8 @@ public class ListVideoUseCaseTest extends UseCaseTest {
         Assertions.assertEquals(expectedPerPage, actualOutput.meta().perPage());
         Assertions.assertEquals(expectedItemsCount, actualOutput.meta().total());
         Assertions.assertTrue(
-            expectedItems.size() == actualOutput.data().size() &&
-                expectedItems.containsAll(actualOutput.data())
+                expectedItems.size() == actualOutput.data().size() &&
+                        expectedItems.containsAll(actualOutput.data())
         );
     }
 }

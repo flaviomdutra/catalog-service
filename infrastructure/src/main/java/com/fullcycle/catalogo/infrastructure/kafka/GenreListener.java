@@ -33,9 +33,9 @@ public class GenreListener {
     private final DeleteGenreUseCase deleteGenreUseCase;
 
     public GenreListener(
-        final GenreClient genreClient,
-        final SaveGenreUseCase saveGenreUseCase,
-        final DeleteGenreUseCase deleteGenreUseCase
+            final GenreClient genreClient,
+            final SaveGenreUseCase saveGenreUseCase,
+            final DeleteGenreUseCase deleteGenreUseCase
     ) {
         this.genreClient = Objects.requireNonNull(genreClient);
         this.saveGenreUseCase = Objects.requireNonNull(saveGenreUseCase);
@@ -43,19 +43,19 @@ public class GenreListener {
     }
 
     @KafkaListener(
-        concurrency = "${kafka.consumers.genres.concurrency}",
-        containerFactory = "kafkaListenerFactory",
-        topics = "${kafka.consumers.genres.topics}",
-        groupId = "${kafka.consumers.genres.group-id}",
-        id = "${kafka.consumers.genres.id}",
-        properties = {
-            "auto.offset.reset=${kafka.consumers.genres.auto-offset-reset}"
-        }
+            concurrency = "${kafka.consumers.genres.concurrency}",
+            containerFactory = "kafkaListenerFactory",
+            topics = "${kafka.consumers.genres.topics}",
+            groupId = "${kafka.consumers.genres.group-id}",
+            id = "${kafka.consumers.genres.id}",
+            properties = {
+                    "auto.offset.reset=${kafka.consumers.genres.auto-offset-reset}"
+            }
     )
     @RetryableTopic(
-        backoff = @Backoff(delay = 1000, multiplier = 2),
-        attempts = "${kafka.consumers.genres.max-attempts}",
-        topicSuffixingStrategy = TopicSuffixingStrategy.SUFFIX_WITH_INDEX_VALUE
+            backoff = @Backoff(delay = 1000, multiplier = 2),
+            attempts = "${kafka.consumers.genres.max-attempts}",
+            topicSuffixingStrategy = TopicSuffixingStrategy.SUFFIX_WITH_INDEX_VALUE
     )
     public void onMessage(@Payload(required = false) final String payload, final ConsumerRecordMetadata metadata) {
         if (payload == null) {
@@ -71,10 +71,10 @@ public class GenreListener {
             this.deleteGenreUseCase.execute(new DeleteGenreUseCase.Input(messagePayload.before().id()));
         } else {
             this.genreClient.genreOfId(messagePayload.after().id())
-                .map(it -> new SaveGenreUseCase.Input(it.id(), it.name(), it.isActive(), it.categoriesId(), it.createdAt(), it.updatedAt(), it.deletedAt()))
-                .ifPresentOrElse(this.saveGenreUseCase::execute, () -> {
-                    LOG.warn("Genre was not found {}", messagePayload.after().id());
-                });
+                    .map(it -> new SaveGenreUseCase.Input(it.id(), it.name(), it.isActive(), it.categoriesId(), it.createdAt(), it.updatedAt(), it.deletedAt()))
+                    .ifPresentOrElse(this.saveGenreUseCase::execute, () -> {
+                        LOG.warn("Genre was not found {}", messagePayload.after().id());
+                    });
         }
     }
 

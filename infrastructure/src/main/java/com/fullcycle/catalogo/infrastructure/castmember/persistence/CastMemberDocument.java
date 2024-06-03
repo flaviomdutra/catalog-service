@@ -14,8 +14,8 @@ public class CastMemberDocument {
     private String id;
 
     @MultiField(
-        mainField = @Field(type = FieldType.Text, name = "name"),
-        otherFields = @InnerField(suffix = "keyword", type = FieldType.Keyword)
+            mainField = @Field(type = FieldType.Text, name = "name"),
+            otherFields = @InnerField(suffix = "keyword", type = FieldType.Keyword)
     )
     private String name;
 
@@ -29,11 +29,11 @@ public class CastMemberDocument {
     private Instant updatedAt;
 
     public CastMemberDocument(
-        final String id,
-        final String name,
-        final CastMemberType type,
-        final Instant createdAt,
-        final Instant updatedAt
+            final String id,
+            final String name,
+            final CastMemberType type,
+            final Instant createdAt,
+            final Instant updatedAt
     ) {
         this.id = id;
         this.name = name;
@@ -44,11 +44,11 @@ public class CastMemberDocument {
 
     public static CastMemberDocument from(final CastMember castMember) {
         return new CastMemberDocument(
-            castMember.id(),
-            castMember.name(),
-            castMember.type(),
-            castMember.createdAt(),
-            castMember.updatedAt()
+                castMember.id(),
+                castMember.name(),
+                castMember.type(),
+                castMember.createdAt(),
+                castMember.updatedAt()
         );
     }
 

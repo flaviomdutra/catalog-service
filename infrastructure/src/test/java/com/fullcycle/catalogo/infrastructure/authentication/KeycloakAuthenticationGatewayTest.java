@@ -27,19 +27,19 @@ class KeycloakAuthenticationGatewayTest extends AbstractRestClientTest {
         final var expectedRefreshToken = "refresh";
 
         stubFor(
-            post(urlPathEqualTo("/realms/test/protocol/openid-connect/token"))
-                .withHeader(HttpHeaders.ACCEPT, equalTo(MediaType.APPLICATION_JSON_VALUE))
-                .withHeader(HttpHeaders.CONTENT_TYPE, equalTo(MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8"))
-                .willReturn(aResponse()
-                    .withStatus(200)
-                    .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .withBody(Json.writeValueAsString(new KeycloakAuthenticationResult(expectedAccessToken, expectedRefreshToken)))
-                )
+                post(urlPathEqualTo("/realms/test/protocol/openid-connect/token"))
+                        .withHeader(HttpHeaders.ACCEPT, equalTo(MediaType.APPLICATION_JSON_VALUE))
+                        .withHeader(HttpHeaders.CONTENT_TYPE, equalTo(MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8"))
+                        .willReturn(aResponse()
+                                .withStatus(200)
+                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .withBody(Json.writeValueAsString(new KeycloakAuthenticationResult(expectedAccessToken, expectedRefreshToken)))
+                        )
         );
 
         // when
         final var actualOutput =
-            this.gateway.login(new ClientCredentialsInput(expectedClientId, expectedClientSecret));
+                this.gateway.login(new ClientCredentialsInput(expectedClientId, expectedClientSecret));
 
         // then
         assertEquals(expectedAccessToken, actualOutput.accessToken());
@@ -55,19 +55,19 @@ class KeycloakAuthenticationGatewayTest extends AbstractRestClientTest {
         final var expectedRefreshToken = "refresh2";
 
         stubFor(
-            post(urlPathEqualTo("/realms/test/protocol/openid-connect/token"))
-                .withHeader(HttpHeaders.ACCEPT, equalTo(MediaType.APPLICATION_JSON_VALUE))
-                .withHeader(HttpHeaders.CONTENT_TYPE, equalTo(MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8"))
-                .willReturn(aResponse()
-                    .withStatus(200)
-                    .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .withBody(Json.writeValueAsString(new KeycloakAuthenticationResult(expectedAccessToken, expectedRefreshToken)))
-                )
+                post(urlPathEqualTo("/realms/test/protocol/openid-connect/token"))
+                        .withHeader(HttpHeaders.ACCEPT, equalTo(MediaType.APPLICATION_JSON_VALUE))
+                        .withHeader(HttpHeaders.CONTENT_TYPE, equalTo(MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8"))
+                        .willReturn(aResponse()
+                                .withStatus(200)
+                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .withBody(Json.writeValueAsString(new KeycloakAuthenticationResult(expectedAccessToken, expectedRefreshToken)))
+                        )
         );
 
         // when
         final var actualOutput =
-            this.gateway.refresh(new RefreshTokenInput(expectedClientId, expectedClientSecret, "refresh"));
+                this.gateway.refresh(new RefreshTokenInput(expectedClientId, expectedClientSecret, "refresh"));
 
         // then
         assertEquals(expectedAccessToken, actualOutput.accessToken());

@@ -172,7 +172,7 @@ public class GenreElasticsearchGatewayTest extends AbstractElasticsearchTest {
         final var expectedCategories = Set.<String>of();
 
         final var aQuery =
-            new GenreSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection, expectedCategories);
+                new GenreSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection, expectedCategories);
 
         // when
         final var actualOutput = this.genreGateway.findAll(aQuery);
@@ -186,16 +186,16 @@ public class GenreElasticsearchGatewayTest extends AbstractElasticsearchTest {
 
     @ParameterizedTest
     @CsvSource({
-        "mar,0,10,1,1,Marketing",
-        "te,0,10,1,1,Technology"
+            "mar,0,10,1,1,Marketing",
+            "te,0,10,1,1,Technology"
     })
     public void givenValidTerm_whenCallsFindAll_shouldReturnElementsFiltered(
-        final String expectedTerms,
-        final int expectedPage,
-        final int expectedPerPage,
-        final int expectedItemsCount,
-        final long expectedTotal,
-        final String expectedName
+            final String expectedTerms,
+            final int expectedPage,
+            final int expectedPerPage,
+            final int expectedItemsCount,
+            final long expectedTotal,
+            final String expectedName
     ) {
         // given
         mockGenres();
@@ -205,7 +205,7 @@ public class GenreElasticsearchGatewayTest extends AbstractElasticsearchTest {
         final var expectedCategories = Set.<String>of();
 
         final var aQuery =
-            new GenreSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection, expectedCategories);
+                new GenreSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection, expectedCategories);
 
         // when
         final var actualOutput = this.genreGateway.findAll(aQuery);
@@ -220,17 +220,17 @@ public class GenreElasticsearchGatewayTest extends AbstractElasticsearchTest {
 
     @ParameterizedTest
     @CsvSource({
-        "c123,0,10,1,1,Marketing",
-        "c456,0,10,1,1,Technology",
-        ",0,10,3,3,Business",
+            "c123,0,10,1,1,Marketing",
+            "c456,0,10,1,1,Technology",
+            ",0,10,3,3,Business",
     })
     public void givenValidCategory_whenCallsFindAll_shouldReturnElementsFiltered(
-        final String categories,
-        final int expectedPage,
-        final int expectedPerPage,
-        final int expectedItemsCount,
-        final long expectedTotal,
-        final String expectedName
+            final String categories,
+            final int expectedPage,
+            final int expectedPerPage,
+            final int expectedItemsCount,
+            final long expectedTotal,
+            final String expectedName
     ) {
         // given
         mockGenres();
@@ -241,7 +241,7 @@ public class GenreElasticsearchGatewayTest extends AbstractElasticsearchTest {
         final var expectedCategories = categories == null ? Set.<String>of() : Set.of(categories);
 
         final var aQuery =
-            new GenreSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection, expectedCategories);
+                new GenreSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection, expectedCategories);
 
         // when
         final var actualOutput = this.genreGateway.findAll(aQuery);
@@ -256,19 +256,19 @@ public class GenreElasticsearchGatewayTest extends AbstractElasticsearchTest {
 
     @ParameterizedTest
     @CsvSource({
-        "name,asc,0,10,3,3,Business",
-        "name,desc,0,10,3,3,Technology",
-        "created_at,asc,0,10,3,3,Technology",
-        "created_at,desc,0,10,3,3,Marketing",
+            "name,asc,0,10,3,3,Business",
+            "name,desc,0,10,3,3,Technology",
+            "created_at,asc,0,10,3,3,Technology",
+            "created_at,desc,0,10,3,3,Marketing",
     })
     public void givenValidSortAndDirection_whenCallsFindAll_shouldReturnElementsSorted(
-        final String expectedSort,
-        final String expectedDirection,
-        final int expectedPage,
-        final int expectedPerPage,
-        final int expectedItemsCount,
-        final long expectedTotal,
-        final String expectedName
+            final String expectedSort,
+            final String expectedDirection,
+            final int expectedPage,
+            final int expectedPerPage,
+            final int expectedItemsCount,
+            final long expectedTotal,
+            final String expectedName
     ) {
         // given
         mockGenres();
@@ -277,7 +277,7 @@ public class GenreElasticsearchGatewayTest extends AbstractElasticsearchTest {
         final var expectedCategories = Set.<String>of();
 
         final var aQuery =
-            new GenreSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection, expectedCategories);
+                new GenreSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection, expectedCategories);
 
         // when
         final var actualOutput = this.genreGateway.findAll(aQuery);
@@ -292,17 +292,17 @@ public class GenreElasticsearchGatewayTest extends AbstractElasticsearchTest {
 
     @ParameterizedTest
     @CsvSource({
-        "0,1,1,3,Business",
-        "1,1,1,3,Marketing",
-        "2,1,1,3,Technology",
-        "3,1,0,3,",
+            "0,1,1,3,Business",
+            "1,1,1,3,Marketing",
+            "2,1,1,3,Technology",
+            "3,1,0,3,",
     })
     public void givenValidPage_whenCallsFindAll_shouldReturnElementsPaged(
-        final int expectedPage,
-        final int expectedPerPage,
-        final int expectedItemsCount,
-        final long expectedTotal,
-        final String expectedName
+            final int expectedPage,
+            final int expectedPerPage,
+            final int expectedItemsCount,
+            final long expectedTotal,
+            final String expectedName
     ) {
         // given
         mockGenres();
@@ -313,7 +313,7 @@ public class GenreElasticsearchGatewayTest extends AbstractElasticsearchTest {
         final var expectedCategories = Set.<String>of();
 
         final var aQuery =
-            new GenreSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection, expectedCategories);
+                new GenreSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection, expectedCategories);
 
         // when
         final var actualOutput = this.genreGateway.findAll(aQuery);

@@ -28,26 +28,26 @@ class GetAllCastMembersByIdUseCaseTest extends UseCaseTest {
     public void givenValidIds_whenCallsGetAllById_shouldReturnIt() {
         // given
         final var members = List.of(
-            Fixture.CastMembers.gabriel(),
-            Fixture.CastMembers.wesley()
+                Fixture.CastMembers.gabriel(),
+                Fixture.CastMembers.wesley()
         );
 
         final var expectedItems = members.stream()
-            .map(GetAllCastMembersByIdUseCase.Output::new)
-            .toList();
+                .map(GetAllCastMembersByIdUseCase.Output::new)
+                .toList();
 
         final var expectedIds = members.stream().map(CastMember::id).collect(Collectors.toSet());
 
         when(this.castMemberGateway.findAllById(any()))
-            .thenReturn(members);
+                .thenReturn(members);
 
         // when
         final var actualOutput = this.useCase.execute(new GetAllCastMembersByIdUseCase.Input(expectedIds));
 
         // then
         Assertions.assertTrue(
-            expectedItems.size() == actualOutput.size() &&
-                expectedItems.containsAll(actualOutput)
+                expectedItems.size() == actualOutput.size() &&
+                        expectedItems.containsAll(actualOutput)
         );
 
         verify(this.castMemberGateway, times(1)).findAllById(expectedIds);

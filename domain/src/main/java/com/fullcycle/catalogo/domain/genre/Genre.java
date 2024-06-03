@@ -19,13 +19,13 @@ public class Genre {
     private Instant deletedAt;
 
     private Genre(
-        final String id,
-        final String name,
-        final boolean active,
-        final Set<String> categories,
-        final Instant createdAt,
-        final Instant updatedAt,
-        final Instant deletedAt
+            final String id,
+            final String name,
+            final boolean active,
+            final Set<String> categories,
+            final Instant createdAt,
+            final Instant updatedAt,
+            final Instant deletedAt
     ) {
         this.id = id;
         this.name = name;
@@ -38,26 +38,26 @@ public class Genre {
     }
 
     public static Genre with(
-        final String id,
-        final String name,
-        final boolean active,
-        final Set<String> categories,
-        final Instant createdAt,
-        final Instant updatedAt,
-        final Instant deletedAt
+            final String id,
+            final String name,
+            final boolean active,
+            final Set<String> categories,
+            final Instant createdAt,
+            final Instant updatedAt,
+            final Instant deletedAt
     ) {
         return new Genre(id, name, active, categories, createdAt, updatedAt, deletedAt);
     }
 
     public static Genre with(final Genre aGenre) {
         return with(
-            aGenre.id(),
-            aGenre.name(),
-            aGenre.active(),
-            aGenre.categories(),
-            aGenre.createdAt(),
-            aGenre.updatedAt(),
-            aGenre.deletedAt()
+                aGenre.id(),
+                aGenre.name(),
+                aGenre.active(),
+                aGenre.categories(),
+                aGenre.createdAt(),
+                aGenre.updatedAt(),
+                aGenre.deletedAt()
         );
     }
 

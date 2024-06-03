@@ -26,7 +26,7 @@ public class DeleteGenreUseCaseTest extends UseCaseTest {
         final var expectedId = business.id();
 
         doNothing()
-            .when(this.genreGateway).deleteById(anyString());
+                .when(this.genreGateway).deleteById(anyString());
 
         // when
         Assertions.assertDoesNotThrow(() -> this.useCase.execute(new DeleteGenreUseCase.Input(expectedId)));

@@ -35,26 +35,26 @@ class GenreRestClientTest extends AbstractRestClientTest {
         final var tech = Fixture.Genres.tech();
 
         final var responseBody = writeValueAsString(new GenreDTO(
-            tech.id(),
-            tech.name(),
-            tech.active(),
-            tech.categories(),
-            tech.createdAt(),
-            tech.updatedAt(),
-            tech.deletedAt()
+                tech.id(),
+                tech.name(),
+                tech.active(),
+                tech.categories(),
+                tech.createdAt(),
+                tech.updatedAt(),
+                tech.deletedAt()
         ));
 
         final var expectedToken = "access-123";
         doReturn(expectedToken).when(credentialsManager).retrieve();
 
         stubFor(
-            get(urlPathEqualTo("/api/genres/%s".formatted(tech.id())))
-                .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
-                .willReturn(aResponse()
-                    .withStatus(200)
-                    .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .withBody(responseBody)
-                )
+                get(urlPathEqualTo("/api/genres/%s".formatted(tech.id())))
+                        .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
+                        .willReturn(aResponse()
+                                .withStatus(200)
+                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .withBody(responseBody)
+                        )
         );
 
         // when
@@ -78,26 +78,26 @@ class GenreRestClientTest extends AbstractRestClientTest {
         final var business = Fixture.Genres.business();
 
         final var responseBody = writeValueAsString(new GenreDTO(
-            business.id(),
-            business.name(),
-            business.active(),
-            business.categories(),
-            business.createdAt(),
-            business.updatedAt(),
-            business.deletedAt()
+                business.id(),
+                business.name(),
+                business.active(),
+                business.categories(),
+                business.createdAt(),
+                business.updatedAt(),
+                business.deletedAt()
         ));
 
         final var expectedToken = "access-123";
         doReturn(expectedToken).when(credentialsManager).retrieve();
 
         stubFor(
-            get(urlPathEqualTo("/api/genres/%s".formatted(business.id())))
-                .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
-                .willReturn(aResponse()
-                    .withStatus(200)
-                    .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .withBody(responseBody)
-                )
+                get(urlPathEqualTo("/api/genres/%s".formatted(business.id())))
+                        .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
+                        .willReturn(aResponse()
+                                .withStatus(200)
+                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .withBody(responseBody)
+                        )
         );
 
         // when
@@ -133,13 +133,13 @@ class GenreRestClientTest extends AbstractRestClientTest {
         doReturn(expectedToken).when(credentialsManager).retrieve();
 
         stubFor(
-            get(urlPathEqualTo("/api/genres/%s".formatted(expectedId)))
-                .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
-                .willReturn(aResponse()
-                    .withStatus(500)
-                    .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .withBody(responseBody)
-                )
+                get(urlPathEqualTo("/api/genres/%s".formatted(expectedId)))
+                        .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
+                        .willReturn(aResponse()
+                                .withStatus(500)
+                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .withBody(responseBody)
+                        )
         );
 
         // when
@@ -162,13 +162,13 @@ class GenreRestClientTest extends AbstractRestClientTest {
         doReturn(expectedToken).when(credentialsManager).retrieve();
 
         stubFor(
-            get(urlPathEqualTo("/api/genres/%s".formatted(expectedId)))
-                .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
-                .willReturn(aResponse()
-                    .withStatus(404)
-                    .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .withBody(responseBody)
-                )
+                get(urlPathEqualTo("/api/genres/%s".formatted(expectedId)))
+                        .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
+                        .willReturn(aResponse()
+                                .withStatus(404)
+                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .withBody(responseBody)
+                        )
         );
 
         // when
@@ -188,27 +188,27 @@ class GenreRestClientTest extends AbstractRestClientTest {
         final var expectedErrorMessage = "Timeout observed from genres [resourceId:%s]".formatted(business.id());
 
         final var responseBody = writeValueAsString(new GenreDTO(
-            business.id(),
-            business.name(),
-            business.active(),
-            business.categories(),
-            business.createdAt(),
-            business.updatedAt(),
-            business.deletedAt()
+                business.id(),
+                business.name(),
+                business.active(),
+                business.categories(),
+                business.createdAt(),
+                business.updatedAt(),
+                business.deletedAt()
         ));
 
         final var expectedToken = "access-123";
         doReturn(expectedToken).when(credentialsManager).retrieve();
 
         stubFor(
-            get(urlPathEqualTo("/api/genres/%s".formatted(business.id())))
-                .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
-                .willReturn(aResponse()
-                    .withStatus(200)
-                    .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .withFixedDelay(600)
-                    .withBody(responseBody)
-                )
+                get(urlPathEqualTo("/api/genres/%s".formatted(business.id())))
+                        .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
+                        .willReturn(aResponse()
+                                .withStatus(200)
+                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .withFixedDelay(600)
+                                .withBody(responseBody)
+                        )
         );
 
         // when
@@ -265,13 +265,13 @@ class GenreRestClientTest extends AbstractRestClientTest {
         doReturn(expectedToken).when(credentialsManager).retrieve();
 
         stubFor(
-            get(urlPathEqualTo("/api/genres/%s".formatted(expectedId)))
-                .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
-                .willReturn(aResponse()
-                    .withStatus(500)
-                    .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                    .withBody(responseBody)
-                )
+                get(urlPathEqualTo("/api/genres/%s".formatted(expectedId)))
+                        .withHeader(HttpHeaders.AUTHORIZATION, equalTo("bearer %s".formatted(expectedToken)))
+                        .willReturn(aResponse()
+                                .withStatus(500)
+                                .withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                                .withBody(responseBody)
+                        )
         );
 
         // when

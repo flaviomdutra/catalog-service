@@ -42,8 +42,8 @@ public class CategoryGraphQLControllerTest {
     public void givenDefaultArgumentsWhenCallsListCategoriesShouldReturn() {
         // given
         final var categories = List.of(
-            ListCategoryOutput.from(Fixture.Categories.lives()),
-            ListCategoryOutput.from(Fixture.Categories.aulas())
+                ListCategoryOutput.from(Fixture.Categories.lives()),
+                ListCategoryOutput.from(Fixture.Categories.aulas())
         );
 
         final var expectedCategories = categories.stream().map(GqlCategoryPresenter::present).toList();
@@ -55,29 +55,29 @@ public class CategoryGraphQLControllerTest {
         final var expectedSearch = "";
 
         when(this.listCategoryUseCase.execute(any()))
-            .thenReturn(new Pagination<>(expectedPage, expectedPerPage, categories.size(), categories));
+                .thenReturn(new Pagination<>(expectedPage, expectedPerPage, categories.size(), categories));
 
         final var query = """
-            {
-              categories {
-                id
-                name
-                description
-              }
-            }
-            """;
+                {
+                  categories {
+                    id
+                    name
+                    description
+                  }
+                }
+                """;
 
         // when
         final var res = this.graphql.document(query).execute();
 
         final var actualCategories = res.path("categories")
-            .entityList(GqlCategory.class)
-            .get();
+                .entityList(GqlCategory.class)
+                .get();
 
         // then
         Assertions.assertTrue(
-            actualCategories.size() == expectedCategories.size()
-                && actualCategories.containsAll(expectedCategories)
+                actualCategories.size() == expectedCategories.size()
+                        && actualCategories.containsAll(expectedCategories)
         );
 
         final var capturer = ArgumentCaptor.forClass(CategorySearchQuery.class);
@@ -96,8 +96,8 @@ public class CategoryGraphQLControllerTest {
     public void givenCustomArgumentsWhenCallsListCategoriesShouldReturn() {
         // given
         final var categories = List.of(
-            ListCategoryOutput.from(Fixture.Categories.lives()),
-            ListCategoryOutput.from(Fixture.Categories.aulas())
+                ListCategoryOutput.from(Fixture.Categories.lives()),
+                ListCategoryOutput.from(Fixture.Categories.aulas())
         );
 
         final var expectedCategories = categories.stream().map(GqlCategoryPresenter::present).toList();
@@ -109,36 +109,36 @@ public class CategoryGraphQLControllerTest {
         final var expectedSearch = "asd";
 
         when(this.listCategoryUseCase.execute(any()))
-            .thenReturn(new Pagination<>(expectedPage, expectedPerPage, categories.size(), categories));
+                .thenReturn(new Pagination<>(expectedPage, expectedPerPage, categories.size(), categories));
 
         final var query = """
-            query AllCategories($search: String, $page: Int, $perPage: Int, $sort: String, $direction: String) {
-                            
-              categories(search: $search, page: $page, perPage: $perPage, sort: $sort, direction: $direction) {
-                id
-                name
-                description
-              }
-            }
-            """;
+                query AllCategories($search: String, $page: Int, $perPage: Int, $sort: String, $direction: String) {
+                                
+                  categories(search: $search, page: $page, perPage: $perPage, sort: $sort, direction: $direction) {
+                    id
+                    name
+                    description
+                  }
+                }
+                """;
 
         // when
         final var res = this.graphql.document(query)
-            .variable("search", expectedSearch)
-            .variable("page", expectedPage)
-            .variable("perPage", expectedPerPage)
-            .variable("sort", expectedSort)
-            .variable("direction", expectedDirection)
-            .execute();
+                .variable("search", expectedSearch)
+                .variable("page", expectedPage)
+                .variable("perPage", expectedPerPage)
+                .variable("sort", expectedSort)
+                .variable("direction", expectedDirection)
+                .execute();
 
         final var actualCategories = res.path("categories")
-            .entityList(GqlCategory.class)
-            .get();
+                .entityList(GqlCategory.class)
+                .get();
 
         // then
         Assertions.assertTrue(
-            actualCategories.size() == expectedCategories.size()
-                && actualCategories.containsAll(expectedCategories)
+                actualCategories.size() == expectedCategories.size()
+                        && actualCategories.containsAll(expectedCategories)
         );
 
         final var capturer = ArgumentCaptor.forClass(CategorySearchQuery.class);
@@ -165,34 +165,34 @@ public class CategoryGraphQLControllerTest {
         final var expectedDeletedAt = InstantUtils.now();
 
         final var input = Map.of(
-            "id", expectedId,
-            "name", expectedName,
-            "description", expectedDescription,
-            "active", expectedActive,
-            "createdAt", expectedCreatedAt.toString(),
-            "updatedAt", expectedUpdatedAt.toString(),
-            "deletedAt", expectedDeletedAt.toString()
+                "id", expectedId,
+                "name", expectedName,
+                "description", expectedDescription,
+                "active", expectedActive,
+                "createdAt", expectedCreatedAt.toString(),
+                "updatedAt", expectedUpdatedAt.toString(),
+                "deletedAt", expectedDeletedAt.toString()
         );
 
         final var query = """
-            mutation SaveCategory($input: CategoryInput!) {
-                category: saveCategory(input: $input) {
-                    id
-                    name
-                    description
+                mutation SaveCategory($input: CategoryInput!) {
+                    category: saveCategory(input: $input) {
+                        id
+                        name
+                        description
+                    }
                 }
-            }
-            """;
+                """;
 
         doAnswer(returnsFirstArg()).when(saveCategoryUseCase).execute(any());
 
         // when
         this.graphql.document(query)
-            .variable("input", input)
-            .execute()
-            .path("category.id").entity(String.class).isEqualTo(expectedId)
-            .path("category.name").entity(String.class).isEqualTo(expectedName)
-            .path("category.description").entity(String.class).isEqualTo(expectedDescription);
+                .variable("input", input)
+                .execute()
+                .path("category.id").entity(String.class).isEqualTo(expectedId)
+                .path("category.name").entity(String.class).isEqualTo(expectedName)
+                .path("category.description").entity(String.class).isEqualTo(expectedDescription);
 
         // then
         final var capturer = ArgumentCaptor.forClass(Category.class);

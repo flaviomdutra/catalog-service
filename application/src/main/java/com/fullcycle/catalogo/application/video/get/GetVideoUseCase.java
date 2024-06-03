@@ -23,7 +23,7 @@ public class GetVideoUseCase extends UseCase<GetVideoUseCase.Input, Optional<Get
         }
 
         return this.videoGateway.findById(input.videoId())
-            .map(Output::from);
+                .map(Output::from);
     }
 
     public record Input(String videoId) {
@@ -31,46 +31,46 @@ public class GetVideoUseCase extends UseCase<GetVideoUseCase.Input, Optional<Get
     }
 
     public record Output(
-        String id,
-        String title,
-        String description,
-        Integer launchedAt,
-        double duration,
-        String rating,
-        boolean opened,
-        boolean published,
-        String createdAt,
-        String updatedAt,
-        String video,
-        String trailer,
-        String banner,
-        String thumbnail,
-        String thumbnailHalf,
-        Set<String> categories,
-        Set<String> castMembers,
-        Set<String> genres
+            String id,
+            String title,
+            String description,
+            Integer launchedAt,
+            double duration,
+            String rating,
+            boolean opened,
+            boolean published,
+            String createdAt,
+            String updatedAt,
+            String video,
+            String trailer,
+            String banner,
+            String thumbnail,
+            String thumbnailHalf,
+            Set<String> categories,
+            Set<String> castMembers,
+            Set<String> genres
     ) {
 
         public static Output from(final Video video) {
             return new Output(
-                video.id(),
-                video.title(),
-                video.description(),
-                video.launchedAt().getValue(),
-                video.duration(),
-                video.rating().getName(),
-                video.opened(),
-                video.published(),
-                video.createdAt().toString(),
-                video.updatedAt().toString(),
-                video.video(),
-                video.trailer(),
-                video.banner(),
-                video.thumbnail(),
-                video.thumbnailHalf(),
-                video.categories(),
-                video.castMembers(),
-                video.genres()
+                    video.id(),
+                    video.title(),
+                    video.description(),
+                    video.launchedAt().getValue(),
+                    video.duration(),
+                    video.rating().getName(),
+                    video.opened(),
+                    video.published(),
+                    video.createdAt().toString(),
+                    video.updatedAt().toString(),
+                    video.video(),
+                    video.trailer(),
+                    video.banner(),
+                    video.thumbnail(),
+                    video.thumbnailHalf(),
+                    video.categories(),
+                    video.castMembers(),
+                    video.genres()
             );
         }
     }

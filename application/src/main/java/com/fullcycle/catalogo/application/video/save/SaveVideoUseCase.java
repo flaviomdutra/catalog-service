@@ -24,48 +24,48 @@ public class SaveVideoUseCase extends UseCase<SaveVideoUseCase.Input, SaveVideoU
         }
 
         final var video = this.videoGateway.save(Video.with(
-            input.id(),
-            input.title(),
-            input.description(),
-            input.launchedAt(),
-            input.duration(),
-            input.rating(),
-            input.opened(),
-            input.published(),
-            input.createdAt(),
-            input.updatedAt(),
-            input.video(),
-            input.trailer(),
-            input.banner(),
-            input.thumbnail(),
-            input.thumbnailHalf(),
-            input.categories(),
-            input.castMembers(),
-            input.genres()
+                input.id(),
+                input.title(),
+                input.description(),
+                input.launchedAt(),
+                input.duration(),
+                input.rating(),
+                input.opened(),
+                input.published(),
+                input.createdAt(),
+                input.updatedAt(),
+                input.video(),
+                input.trailer(),
+                input.banner(),
+                input.thumbnail(),
+                input.thumbnailHalf(),
+                input.categories(),
+                input.castMembers(),
+                input.genres()
         ));
 
         return new Output(video.id());
     }
 
     public record Input(
-        String id,
-        String title,
-        String description,
-        Integer launchedAt,
-        double duration,
-        String rating,
-        boolean opened,
-        boolean published,
-        String createdAt,
-        String updatedAt,
-        String video,
-        String trailer,
-        String banner,
-        String thumbnail,
-        String thumbnailHalf,
-        Set<String> categories,
-        Set<String> castMembers,
-        Set<String> genres
+            String id,
+            String title,
+            String description,
+            Integer launchedAt,
+            double duration,
+            String rating,
+            boolean opened,
+            boolean published,
+            String createdAt,
+            String updatedAt,
+            String video,
+            String trailer,
+            String banner,
+            String thumbnail,
+            String thumbnailHalf,
+            Set<String> categories,
+            Set<String> castMembers,
+            Set<String> genres
     ) {
     }
 

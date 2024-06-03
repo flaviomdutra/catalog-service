@@ -119,7 +119,7 @@ class CastMemberElasticsearchGatewayTest extends AbstractElasticsearchTest {
         final var expectedTotal = 0;
 
         final var aQuery =
-            new CastMemberSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+                new CastMemberSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         // when
         final var actualOutput = this.castMemberGateway.findAll(aQuery);
@@ -133,16 +133,16 @@ class CastMemberElasticsearchGatewayTest extends AbstractElasticsearchTest {
 
     @ParameterizedTest
     @CsvSource({
-        "gab,0,10,1,1,Gabriel FullCycle",
-        "leo,0,10,1,1,Leonan FullCycle"
+            "gab,0,10,1,1,Gabriel FullCycle",
+            "leo,0,10,1,1,Leonan FullCycle"
     })
     public void givenValidTerm_whenCallsFindAll_shouldReturnElementsFiltered(
-        final String expectedTerms,
-        final int expectedPage,
-        final int expectedPerPage,
-        final int expectedItemsCount,
-        final long expectedTotal,
-        final String expectedName
+            final String expectedTerms,
+            final int expectedPage,
+            final int expectedPerPage,
+            final int expectedItemsCount,
+            final long expectedTotal,
+            final String expectedName
     ) {
         // given
         mockCastMembers();
@@ -151,7 +151,7 @@ class CastMemberElasticsearchGatewayTest extends AbstractElasticsearchTest {
         final var expectedDirection = "asc";
 
         final var aQuery =
-            new CastMemberSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+                new CastMemberSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         // when
         final var actualOutput = this.castMemberGateway.findAll(aQuery);
@@ -166,19 +166,19 @@ class CastMemberElasticsearchGatewayTest extends AbstractElasticsearchTest {
 
     @ParameterizedTest
     @CsvSource({
-        "name,asc,0,10,3,3,Gabriel FullCycle",
-        "name,desc,0,10,3,3,Wesley FullCycle",
-        "created_at,asc,0,10,3,3,Gabriel FullCycle",
-        "created_at,desc,0,10,3,3,Leonan FullCycle",
+            "name,asc,0,10,3,3,Gabriel FullCycle",
+            "name,desc,0,10,3,3,Wesley FullCycle",
+            "created_at,asc,0,10,3,3,Gabriel FullCycle",
+            "created_at,desc,0,10,3,3,Leonan FullCycle",
     })
     public void givenValidSortAndDirection_whenCallsFindAll_shouldReturnElementsSorted(
-        final String expectedSort,
-        final String expectedDirection,
-        final int expectedPage,
-        final int expectedPerPage,
-        final int expectedItemsCount,
-        final long expectedTotal,
-        final String expectedName
+            final String expectedSort,
+            final String expectedDirection,
+            final int expectedPage,
+            final int expectedPerPage,
+            final int expectedItemsCount,
+            final long expectedTotal,
+            final String expectedName
     ) {
         // given
         mockCastMembers();
@@ -186,7 +186,7 @@ class CastMemberElasticsearchGatewayTest extends AbstractElasticsearchTest {
         final var expectedTerms = "";
 
         final var aQuery =
-            new CastMemberSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+                new CastMemberSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         // when
         final var actualOutput = this.castMemberGateway.findAll(aQuery);
@@ -201,17 +201,17 @@ class CastMemberElasticsearchGatewayTest extends AbstractElasticsearchTest {
 
     @ParameterizedTest
     @CsvSource({
-        "0,1,1,3,Gabriel FullCycle",
-        "1,1,1,3,Leonan FullCycle",
-        "2,1,1,3,Wesley FullCycle",
-        "3,1,0,3,",
+            "0,1,1,3,Gabriel FullCycle",
+            "1,1,1,3,Leonan FullCycle",
+            "2,1,1,3,Wesley FullCycle",
+            "3,1,0,3,",
     })
     public void givenValidPage_whenCallsFindAll_shouldReturnElementsPaged(
-        final int expectedPage,
-        final int expectedPerPage,
-        final int expectedItemsCount,
-        final long expectedTotal,
-        final String expectedName
+            final int expectedPage,
+            final int expectedPerPage,
+            final int expectedItemsCount,
+            final long expectedTotal,
+            final String expectedName
     ) {
         // given
         mockCastMembers();
@@ -221,7 +221,7 @@ class CastMemberElasticsearchGatewayTest extends AbstractElasticsearchTest {
         final var expectedDirection = "asc";
 
         final var aQuery =
-            new CastMemberSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
+                new CastMemberSearchQuery(expectedPage, expectedPerPage, expectedTerms, expectedSort, expectedDirection);
 
         // when
         final var actualOutput = this.castMemberGateway.findAll(aQuery);

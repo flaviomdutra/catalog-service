@@ -21,25 +21,25 @@ public class ListGenreUseCase extends UseCase<ListGenreUseCase.Input, Pagination
     @Override
     public Pagination<Output> execute(final ListGenreUseCase.Input input) {
         final var aQuery = new GenreSearchQuery(
-            input.page(),
-            input.perPage(),
-            input.terms(),
-            input.sort(),
-            input.direction(),
-            input.categories()
+                input.page(),
+                input.perPage(),
+                input.terms(),
+                input.sort(),
+                input.direction(),
+                input.categories()
         );
 
         return this.genreGateway.findAll(aQuery)
-            .map(Output::from);
+                .map(Output::from);
     }
 
     public record Input(
-        int page,
-        int perPage,
-        String terms,
-        String sort,
-        String direction,
-        Set<String> categories
+            int page,
+            int perPage,
+            String terms,
+            String sort,
+            String direction,
+            Set<String> categories
     ) {
 
     }
@@ -49,13 +49,13 @@ public class ListGenreUseCase extends UseCase<ListGenreUseCase.Input, Pagination
 
         public static Output from(Genre genre) {
             return new Output(
-                genre.id(),
-                genre.name(),
-                genre.active(),
-                genre.categories(),
-                genre.createdAt(),
-                genre.updatedAt(),
-                genre.deletedAt()
+                    genre.id(),
+                    genre.name(),
+                    genre.active(),
+                    genre.categories(),
+                    genre.createdAt(),
+                    genre.updatedAt(),
+                    genre.deletedAt()
             );
         }
     }

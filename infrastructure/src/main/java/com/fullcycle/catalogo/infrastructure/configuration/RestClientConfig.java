@@ -24,14 +24,14 @@ public class RestClientConfig {
         factory.setReadTimeout(properties.readTimeout());
 
         return RestClient.builder()
-            .baseUrl(properties.baseUrl())
-            .requestFactory(factory)
-            .messageConverters(converters -> {
-                converters.removeIf(it -> it instanceof MappingJackson2HttpMessageConverter);
-                converters.add(jsonConverter(objectMapper));
-                converters.add(new FormHttpMessageConverter());
-            })
-            .build();
+                .baseUrl(properties.baseUrl())
+                .requestFactory(factory)
+                .messageConverters(converters -> {
+                    converters.removeIf(it -> it instanceof MappingJackson2HttpMessageConverter);
+                    converters.add(jsonConverter(objectMapper));
+                    converters.add(new FormHttpMessageConverter());
+                })
+                .build();
     }
 
     private static MappingJackson2HttpMessageConverter jsonConverter(ObjectMapper objectMapper) {

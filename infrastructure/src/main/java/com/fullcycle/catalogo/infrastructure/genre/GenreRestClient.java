@@ -37,13 +37,13 @@ public class GenreRestClient implements GenreClient, HttpClient {
     public Optional<GenreDTO> genreOfId(String genreId) {
         final var token = this.getClientCredentials.retrieve();
         return doGet(genreId, () ->
-            this.restClient.get()
-                .uri("/{id}", genreId)
-                .header(HttpHeaders.AUTHORIZATION, "bearer " + token)
-                .retrieve()
-                .onStatus(isNotFound, notFoundHandler(genreId))
-                .onStatus(is5xx, a5xxHandler(genreId))
-                .body(GenreDTO.class)
+                this.restClient.get()
+                        .uri("/{id}", genreId)
+                        .header(HttpHeaders.AUTHORIZATION, "bearer " + token)
+                        .retrieve()
+                        .onStatus(isNotFound, notFoundHandler(genreId))
+                        .onStatus(is5xx, a5xxHandler(genreId))
+                        .body(GenreDTO.class)
         );
     }
 

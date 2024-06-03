@@ -28,24 +28,24 @@ public class GenreGraphQLController {
     @QueryMapping
 //    @Secured({Roles.ROLE_ADMIN, Roles.ROLE_SUBSCRIBER, Roles.ROLE_GENRES})
     public List<GqlGenre> genres(
-        @Argument final String search,
-        @Argument final int page,
-        @Argument final int perPage,
-        @Argument final String sort,
-        @Argument final String direction,
-        @Argument final Set<String> categories
+            @Argument final String search,
+            @Argument final int page,
+            @Argument final int perPage,
+            @Argument final String sort,
+            @Argument final String direction,
+            @Argument final Set<String> categories
     ) {
         final var input = new ListGenreUseCase.Input(page, perPage, search, sort, direction, categories);
         return this.listGenreUseCase.execute(input)
-            .map(GqlGenrePresenter::present)
-            .data();
+                .map(GqlGenrePresenter::present)
+                .data();
     }
 
     @MutationMapping
 //    @Secured({Roles.ROLE_ADMIN, Roles.ROLE_SUBSCRIBER, Roles.ROLE_GENRES})
     public SaveGenreUseCase.Output saveGenre(@Argument(name = "input") final GqlGenreInput arg) {
         final var input =
-            new SaveGenreUseCase.Input(arg.id(), arg.name(), arg.active(), arg.categories(), arg.createdAt(), arg.updatedAt(), arg.deletedAt());
+                new SaveGenreUseCase.Input(arg.id(), arg.name(), arg.active(), arg.categories(), arg.createdAt(), arg.updatedAt(), arg.deletedAt());
 
         return this.saveGenreUseCase.execute(input);
     }

@@ -35,8 +35,8 @@ public class CastMemberElasticsearchGateway implements CastMemberGateway {
     private final SearchOperations searchOperations;
 
     public CastMemberElasticsearchGateway(
-        final CastMemberRepository castMemberRepository,
-        final SearchOperations searchOperations
+            final CastMemberRepository castMemberRepository,
+            final SearchOperations searchOperations
     ) {
         this.castMemberRepository = Objects.requireNonNull(castMemberRepository);
         this.searchOperations = Objects.requireNonNull(searchOperations);
@@ -56,7 +56,7 @@ public class CastMemberElasticsearchGateway implements CastMemberGateway {
     @Override
     public Optional<CastMember> findById(final String anId) {
         return this.castMemberRepository.findById(anId)
-            .map(CastMemberDocument::toCastMember);
+                .map(CastMemberDocument::toCastMember);
     }
 
     @Override
@@ -65,8 +65,8 @@ public class CastMemberElasticsearchGateway implements CastMemberGateway {
             return List.of();
         }
         return StreamSupport.stream(this.castMemberRepository.findAllById(ids).spliterator(), false)
-            .map(CastMemberDocument::toCastMember)
-            .toList();
+                .map(CastMemberDocument::toCastMember)
+                .toList();
     }
 
     @Override
@@ -78,17 +78,17 @@ public class CastMemberElasticsearchGateway implements CastMemberGateway {
         final var pageRequest = PageRequest.of(currentPage, perPage, sort);
 
         final Query query = StringUtils.isNotEmpty(terms)
-            ? new CriteriaQuery(where("name").contains(terms), pageRequest)
-            : Query.findAll().setPageable(pageRequest);
+                ? new CriteriaQuery(where("name").contains(terms), pageRequest)
+                : Query.findAll().setPageable(pageRequest);
 
         final var res = this.searchOperations.search(query, CastMemberDocument.class);
 
         final var total = res.getTotalHits();
 
         final var members = res.stream()
-            .map(SearchHit::getContent)
-            .map(CastMemberDocument::toCastMember)
-            .toList();
+                .map(SearchHit::getContent)
+                .map(CastMemberDocument::toCastMember)
+                .toList();
 
         return new Pagination<>(currentPage, perPage, total, members);
     }

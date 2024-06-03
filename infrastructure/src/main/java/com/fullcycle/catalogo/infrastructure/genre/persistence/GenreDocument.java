@@ -14,8 +14,8 @@ public class GenreDocument {
     private String id;
 
     @MultiField(
-        mainField = @Field(type = FieldType.Text, name = "name"),
-        otherFields = @InnerField(suffix = "keyword", type = FieldType.Keyword)
+            mainField = @Field(type = FieldType.Text, name = "name"),
+            otherFields = @InnerField(suffix = "keyword", type = FieldType.Keyword)
     )
     private String name;
 
@@ -35,13 +35,13 @@ public class GenreDocument {
     private Instant deletedAt;
 
     public GenreDocument(
-        final String id,
-        final String name,
-        final boolean active,
-        final Set<String> categories,
-        final Instant createdAt,
-        final Instant updatedAt,
-        final Instant deletedAt
+            final String id,
+            final String name,
+            final boolean active,
+            final Set<String> categories,
+            final Instant createdAt,
+            final Instant updatedAt,
+            final Instant deletedAt
     ) {
         this.id = id;
         this.name = name;
@@ -54,25 +54,25 @@ public class GenreDocument {
 
     public static GenreDocument from(final Genre aGenre) {
         return new GenreDocument(
-            aGenre.id(),
-            aGenre.name(),
-            aGenre.active(),
-            aGenre.categories(),
-            aGenre.createdAt(),
-            aGenre.updatedAt(),
-            aGenre.deletedAt()
+                aGenre.id(),
+                aGenre.name(),
+                aGenre.active(),
+                aGenre.categories(),
+                aGenre.createdAt(),
+                aGenre.updatedAt(),
+                aGenre.deletedAt()
         );
     }
 
     public Genre toGenre() {
         return Genre.with(
-            id(),
-            name(),
-            active(),
-            categories(),
-            createdAt(),
-            updatedAt(),
-            deletedAt()
+                id(),
+                name(),
+                active(),
+                categories(),
+                createdAt(),
+                updatedAt(),
+                deletedAt()
         );
     }
 

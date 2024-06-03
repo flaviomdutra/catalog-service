@@ -26,8 +26,8 @@ public class GetAllCastMembersByIdUseCase extends UseCase<GetAllCastMembersByIdU
         }
 
         return this.castMemberGateway.findAllById(in.ids()).stream()
-            .map(Output::new)
-            .toList();
+                .map(Output::new)
+                .toList();
     }
 
     public record Input(Set<String> ids) {
@@ -38,20 +38,20 @@ public class GetAllCastMembersByIdUseCase extends UseCase<GetAllCastMembersByIdU
     }
 
     public record Output(
-        String id,
-        String name,
-        CastMemberType type,
-        Instant createdAt,
-        Instant updatedAt
+            String id,
+            String name,
+            CastMemberType type,
+            Instant createdAt,
+            Instant updatedAt
     ) {
 
         public Output(final CastMember aMember) {
             this(
-                aMember.id(),
-                aMember.name(),
-                aMember.type(),
-                aMember.createdAt(),
-                aMember.updatedAt()
+                    aMember.id(),
+                    aMember.name(),
+                    aMember.type(),
+                    aMember.createdAt(),
+                    aMember.updatedAt()
             );
         }
     }

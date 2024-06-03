@@ -26,7 +26,7 @@ public class DeleteVideoUseCaseTest extends UseCaseTest {
         final var expectedId = java21.id();
 
         doNothing()
-            .when(this.videoGateway).deleteById(anyString());
+                .when(this.videoGateway).deleteById(anyString());
 
         // when
         Assertions.assertDoesNotThrow(() -> this.useCase.execute(new DeleteVideoUseCase.Input(expectedId)));

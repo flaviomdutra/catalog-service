@@ -3,16 +3,16 @@ package com.fullcycle.catalogo.domain.video;
 import java.util.Set;
 
 public record VideoSearchQuery(
-    int page,
-    int perPage,
-    String terms,
-    String sort,
-    String direction,
-    String rating,
-    Integer launchedAt,
-    Set<String> categories,
-    Set<String> castMembers,
-    Set<String> genres
+        int page,
+        int perPage,
+        String terms,
+        String sort,
+        String direction,
+        String rating,
+        Integer launchedAt,
+        Set<String> categories,
+        Set<String> castMembers,
+        Set<String> genres
 ) {
 
     @Override

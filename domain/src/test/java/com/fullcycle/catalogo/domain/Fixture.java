@@ -38,9 +38,9 @@ public final class Fixture {
 
     public static String title() {
         return FAKER.options().option(
-            "System Design no Mercado Livre na prática",
-            "Não cometa esses erros ao trabalhar com Microsserviços",
-            "Testes de Mutação. Você não testa seu software corretamente"
+                "System Design no Mercado Livre na prática",
+                "Não cometa esses erros ao trabalhar com Microsserviços",
+                "Testes de Mutação. Você não testa seu software corretamente"
         );
     }
 
@@ -52,37 +52,37 @@ public final class Fixture {
 
         public static Category aulas() {
             return Category.with(
-                UUID.randomUUID().toString().replace("-", ""),
-                "Aulas",
-                "Conteudo gravado",
-                true,
-                now(),
-                now(),
-                null
+                    UUID.randomUUID().toString().replace("-", ""),
+                    "Aulas",
+                    "Conteudo gravado",
+                    true,
+                    now(),
+                    now(),
+                    null
             );
         }
 
         public static Category talks() {
             return Category.with(
-                UUID.randomUUID().toString().replace("-", ""),
-                "Talks",
-                "Conteudo ao vivo",
-                false,
-                now(),
-                now(),
-                now()
+                    UUID.randomUUID().toString().replace("-", ""),
+                    "Talks",
+                    "Conteudo ao vivo",
+                    false,
+                    now(),
+                    now(),
+                    now()
             );
         }
 
         public static Category lives() {
             return Category.with(
-                UUID.randomUUID().toString().replace("-", ""),
-                "Lives",
-                "Conteudo ao vivo",
-                true,
-                now(),
-                now(),
-                null
+                    UUID.randomUUID().toString().replace("-", ""),
+                    "Lives",
+                    "Conteudo ao vivo",
+                    true,
+                    now(),
+                    now(),
+                    null
             );
         }
     }
@@ -129,70 +129,70 @@ public final class Fixture {
 
         public static Video systemDesign() {
             return Video.with(
-                IdUtils.uniqueId(),
-                "System Design no Mercado Livre na prática",
-                "O vídeo mais assistido",
-                2022,
-                Fixture.duration(),
-                Rating.AGE_16.getName(),
-                true,
-                true,
-                InstantUtils.now().toString(),
-                InstantUtils.now().toString(),
-                "http://video",
-                "http://trailer",
-                "http://banner",
-                "http://thumb",
-                "http://thumbhalf",
-                Set.of("aulas"),
-                Set.of("luiz"),
-                Set.of("systemdesign")
+                    IdUtils.uniqueId(),
+                    "System Design no Mercado Livre na prática",
+                    "O vídeo mais assistido",
+                    2022,
+                    Fixture.duration(),
+                    Rating.AGE_16.getName(),
+                    true,
+                    true,
+                    InstantUtils.now().toString(),
+                    InstantUtils.now().toString(),
+                    "http://video",
+                    "http://trailer",
+                    "http://banner",
+                    "http://thumb",
+                    "http://thumbhalf",
+                    Set.of("aulas"),
+                    Set.of("luiz"),
+                    Set.of("systemdesign")
             );
         }
 
         public static Video java21() {
             return Video.with(
-                IdUtils.uniqueId(),
-                "Java 21",
-                "Java FTW",
-                2023,
-                Fixture.duration(),
-                Rating.AGE_10.getName(),
-                true,
-                true,
-                InstantUtils.now().toString(),
-                InstantUtils.now().toString(),
-                "http://video",
-                "http://trailer",
-                "http://banner",
-                "http://thumb",
-                "http://thumbhalf",
-                Set.of("lives"),
-                Set.of("gabriel"),
-                Set.of("java")
+                    IdUtils.uniqueId(),
+                    "Java 21",
+                    "Java FTW",
+                    2023,
+                    Fixture.duration(),
+                    Rating.AGE_10.getName(),
+                    true,
+                    true,
+                    InstantUtils.now().toString(),
+                    InstantUtils.now().toString(),
+                    "http://video",
+                    "http://trailer",
+                    "http://banner",
+                    "http://thumb",
+                    "http://thumbhalf",
+                    Set.of("lives"),
+                    Set.of("gabriel"),
+                    Set.of("java")
             );
         }
 
         public static Video golang() {
             return Video.with(
-                IdUtils.uniqueId(),
-                "Golang 1.22",
-                "Um vídeo da linguagem go",
-                2024,
-                Fixture.duration(),
-                Rating.L.getName(),
-                true,
-                true,
-                InstantUtils.now().toString(),
-                InstantUtils.now().toString(),
-                "http://video",
-                "http://trailer",
-                "http://banner",
-                "http://thumb",
-                "http://thumbhalf",
-                Set.of("meeting"),
-                Set.of("wesley"),
-                Set.of("golang")
+                    IdUtils.uniqueId(),
+                    "Golang 1.22",
+                    "Um vídeo da linguagem go",
+                    2024,
+                    Fixture.duration(),
+                    Rating.L.getName(),
+                    true,
+                    true,
+                    InstantUtils.now().toString(),
+                    InstantUtils.now().toString(),
+                    "http://video",
+                    "http://trailer",
+                    "http://banner",
+                    "http://thumb",
+                    "http://thumbhalf",
+                    Set.of("meeting"),
+                    Set.of("wesley"),
+                    Set.of("golang")
             );
         }
     }

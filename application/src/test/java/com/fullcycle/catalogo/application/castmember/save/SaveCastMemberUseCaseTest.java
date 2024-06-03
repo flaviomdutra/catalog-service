@@ -31,7 +31,7 @@ public class SaveCastMemberUseCaseTest extends UseCaseTest {
         final var aMember = Fixture.CastMembers.gabriel();
 
         when(castMemberGateway.save(any()))
-            .thenAnswer(returnsFirstArg());
+                .thenAnswer(returnsFirstArg());
 
         // when
         this.useCase.execute(aMember);
@@ -64,11 +64,11 @@ public class SaveCastMemberUseCaseTest extends UseCaseTest {
         final var expectedErrorMessage = "'id' should not be empty";
 
         final var aMember = CastMember.with(
-            "",
-            "Gabriel",
-            CastMemberType.ACTOR,
-            InstantUtils.now(),
-            InstantUtils.now()
+                "",
+                "Gabriel",
+                CastMemberType.ACTOR,
+                InstantUtils.now(),
+                InstantUtils.now()
         );
 
         // when
@@ -88,11 +88,11 @@ public class SaveCastMemberUseCaseTest extends UseCaseTest {
         final var expectedErrorMessage = "'name' should not be empty";
 
         final var aMember = CastMember.with(
-            "1231321",
-            "",
-            CastMemberType.ACTOR,
-            InstantUtils.now(),
-            InstantUtils.now()
+                "1231321",
+                "",
+                CastMemberType.ACTOR,
+                InstantUtils.now(),
+                InstantUtils.now()
         );
 
         // when

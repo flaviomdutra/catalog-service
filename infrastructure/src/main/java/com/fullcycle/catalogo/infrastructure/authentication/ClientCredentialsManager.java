@@ -12,14 +12,14 @@ import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 public class ClientCredentialsManager implements GetClientCredentials, RefreshClientCredentials {
 
     private static final AtomicReferenceFieldUpdater<ClientCredentialsManager, ClientCredentials> UPDATER
-        = AtomicReferenceFieldUpdater.newUpdater(ClientCredentialsManager.class, ClientCredentials.class, "credentials");
+            = AtomicReferenceFieldUpdater.newUpdater(ClientCredentialsManager.class, ClientCredentials.class, "credentials");
     private final AuthenticationGateway authenticationGateway;
     private final KeycloakProperties keycloakProperties;
     private volatile ClientCredentials credentials;
 
     public ClientCredentialsManager(
-        final AuthenticationGateway authenticationGateway,
-        final KeycloakProperties keycloakProperties
+            final AuthenticationGateway authenticationGateway,
+            final KeycloakProperties keycloakProperties
     ) {
         this.authenticationGateway = Objects.requireNonNull(authenticationGateway);
         this.keycloakProperties = Objects.requireNonNull(keycloakProperties);

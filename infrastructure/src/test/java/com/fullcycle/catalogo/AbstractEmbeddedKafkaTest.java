@@ -25,11 +25,11 @@ import java.util.Collections;
 @EmbeddedKafka(partitions = 1, brokerProperties = {"listeners=PLAINTEXT://localhost:9092", "port=9092"})
 @ActiveProfiles("test-integration")
 @EnableAutoConfiguration(exclude = {
-    ElasticsearchRepositoriesAutoConfiguration.class,
+        ElasticsearchRepositoriesAutoConfiguration.class,
 })
 @SpringBootTest(
-    classes = {WebServerConfig.class, IntegrationTestConfiguration.class},
-    properties = {"kafka.bootstrap-servers=${spring.embedded.kafka.brokers}"}
+        classes = {WebServerConfig.class, IntegrationTestConfiguration.class},
+        properties = {"kafka.bootstrap-servers=${spring.embedded.kafka.brokers}"}
 )
 @Tag("integrationTest")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -45,8 +45,8 @@ public abstract class AbstractEmbeddedKafkaTest {
         admin = AdminClient.create(Collections.singletonMap(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaBroker.getBrokersAsString()));
 
         producer =
-            new DefaultKafkaProducerFactory<>(KafkaTestUtils.producerProps(kafkaBroker), new StringSerializer(), new StringSerializer())
-                .createProducer();
+                new DefaultKafkaProducerFactory<>(KafkaTestUtils.producerProps(kafkaBroker), new StringSerializer(), new StringSerializer())
+                        .createProducer();
     }
 
     @AfterAll

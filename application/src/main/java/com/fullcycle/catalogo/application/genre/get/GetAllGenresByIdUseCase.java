@@ -25,8 +25,8 @@ public class GetAllGenresByIdUseCase extends UseCase<GetAllGenresByIdUseCase.Inp
         }
 
         return this.genreGateway.findAllById(in.ids()).stream()
-            .map(Output::new)
-            .toList();
+                .map(Output::new)
+                .toList();
     }
 
     public record Input(Set<String> ids) {
@@ -37,24 +37,24 @@ public class GetAllGenresByIdUseCase extends UseCase<GetAllGenresByIdUseCase.Inp
     }
 
     public record Output(
-        String id,
-        String name,
-        boolean active,
-        Set<String> categories,
-        Instant createdAt,
-        Instant updatedAt,
-        Instant deletedAt
+            String id,
+            String name,
+            boolean active,
+            Set<String> categories,
+            Instant createdAt,
+            Instant updatedAt,
+            Instant deletedAt
     ) {
 
         public Output(final Genre genre) {
             this(
-                genre.id(),
-                genre.name(),
-                genre.active(),
-                genre.categories(),
-                genre.createdAt(),
-                genre.updatedAt(),
-                genre.deletedAt()
+                    genre.id(),
+                    genre.name(),
+                    genre.active(),
+                    genre.categories(),
+                    genre.createdAt(),
+                    genre.updatedAt(),
+                    genre.deletedAt()
             );
         }
     }

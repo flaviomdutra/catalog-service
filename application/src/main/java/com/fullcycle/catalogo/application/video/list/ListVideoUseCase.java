@@ -21,78 +21,78 @@ public class ListVideoUseCase extends UseCase<ListVideoUseCase.Input, Pagination
     @Override
     public Pagination<Output> execute(final ListVideoUseCase.Input input) {
         final var aQuery = new VideoSearchQuery(
-            input.page(),
-            input.perPage(),
-            input.terms(),
-            input.sort(),
-            input.direction(),
-            input.rating(),
-            input.launchedAt(),
-            input.categories(),
-            input.castMembers(),
-            input.genres()
+                input.page(),
+                input.perPage(),
+                input.terms(),
+                input.sort(),
+                input.direction(),
+                input.rating(),
+                input.launchedAt(),
+                input.categories(),
+                input.castMembers(),
+                input.genres()
         );
 
         return this.videoGateway.findAll(aQuery)
-            .map(Output::from);
+                .map(Output::from);
     }
 
     public record Input(
-        int page,
-        int perPage,
-        String terms,
-        String sort,
-        String direction,
-        String rating,
-        Integer launchedAt,
-        Set<String> categories,
-        Set<String> castMembers,
-        Set<String> genres
+            int page,
+            int perPage,
+            String terms,
+            String sort,
+            String direction,
+            String rating,
+            Integer launchedAt,
+            Set<String> categories,
+            Set<String> castMembers,
+            Set<String> genres
     ) {
 
     }
 
     public record Output(
-        String id,
-        String title,
-        String description,
-        int yearLaunched,
-        String rating,
-        Double duration,
-        boolean opened,
-        boolean published,
-        String video,
-        String trailer,
-        String banner,
-        String thumbnail,
-        String thumbnailHalf,
-        Set<String> categoriesId,
-        Set<String> castMembersId,
-        Set<String> genresId,
-        Instant createdAt,
-        Instant updatedAt
+            String id,
+            String title,
+            String description,
+            int yearLaunched,
+            String rating,
+            Double duration,
+            boolean opened,
+            boolean published,
+            String video,
+            String trailer,
+            String banner,
+            String thumbnail,
+            String thumbnailHalf,
+            Set<String> categoriesId,
+            Set<String> castMembersId,
+            Set<String> genresId,
+            Instant createdAt,
+            Instant updatedAt
     ) {
 
         public static Output from(Video video) {
             return new Output(
-                video.id(),
-                video.title(),
-                video.description(),
-                video.launchedAt().getValue(),
-                video.rating().getName(),
-                video.duration(),
-                video.opened(),
-                video.published(),
-                video.video(),
-                video.trailer(),
-                video.banner(),
-                video.thumbnail(),
-                video.thumbnailHalf(),
-                video.categories(),
-                video.castMembers(),
-                video.genres(),
-                video.createdAt(),
-                video.updatedAt()
+                    video.id(),
+                    video.title(),
+                    video.description(),
+                    video.launchedAt().getValue(),
+                    video.rating().getName(),
+                    video.duration(),
+                    video.opened(),
+                    video.published(),
+                    video.video(),
+                    video.trailer(),
+                    video.banner(),
+                    video.thumbnail(),
+                    video.thumbnailHalf(),
+                    video.categories(),
+                    video.castMembers(),
+                    video.genres(),
+                    video.createdAt(),
+                    video.updatedAt()
             );
         }
     }
