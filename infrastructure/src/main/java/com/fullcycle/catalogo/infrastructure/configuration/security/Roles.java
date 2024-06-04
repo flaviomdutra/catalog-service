@@ -8,6 +8,7 @@ public final class Roles {
     public static final String ROLE_CATEGORIES = "ROLE_CATALOGO_CATEGORIES";
     public static final String ROLE_GENRES = "ROLE_CATALOGO_GENRES";
     public static final String ROLE_VIDEOS = "ROLE_CATALOGO_VIDEOS";
+
     private Roles() {
     }
 }

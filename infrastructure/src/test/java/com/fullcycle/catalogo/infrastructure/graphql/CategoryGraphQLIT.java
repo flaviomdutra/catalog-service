@@ -2,34 +2,22 @@ package com.fullcycle.catalogo.infrastructure.graphql;
 
 import com.fullcycle.catalogo.IntegrationTest;
 import com.fullcycle.catalogo.WebGraphQlSecurityInterceptor;
-import com.fullcycle.catalogo.application.castmember.list.ListCastMembersOutput;
 import com.fullcycle.catalogo.application.category.list.ListCategoryOutput;
 import com.fullcycle.catalogo.application.category.list.ListCategoryUseCase;
 import com.fullcycle.catalogo.application.category.save.SaveCategoryUseCase;
 import com.fullcycle.catalogo.domain.Fixture;
-import com.fullcycle.catalogo.domain.category.Category;
-import com.fullcycle.catalogo.domain.category.CategorySearchQuery;
 import com.fullcycle.catalogo.domain.pagination.Pagination;
-import com.fullcycle.catalogo.domain.utils.IdUtils;
-import com.fullcycle.catalogo.domain.utils.InstantUtils;
-import com.fullcycle.catalogo.infrastructure.category.GqlCategoryPresenter;
-import com.fullcycle.catalogo.infrastructure.category.models.GqlCategory;
 import com.fullcycle.catalogo.infrastructure.configuration.security.Roles;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.graphql.server.WebGraphQlHandler;
-import org.springframework.graphql.test.tester.GraphQlTester;
 import org.springframework.graphql.test.tester.WebGraphQlTester;
 
 import java.util.List;
-import java.util.Map;
 
-import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 @IntegrationTest
 public class CategoryGraphQLIT {

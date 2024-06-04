@@ -2,31 +2,21 @@ package com.fullcycle.catalogo.infrastructure.graphql;
 
 import com.fullcycle.catalogo.IntegrationTest;
 import com.fullcycle.catalogo.WebGraphQlSecurityInterceptor;
-import com.fullcycle.catalogo.application.category.list.ListCategoryOutput;
 import com.fullcycle.catalogo.application.genre.list.ListGenreUseCase;
 import com.fullcycle.catalogo.application.genre.save.SaveGenreUseCase;
 import com.fullcycle.catalogo.domain.Fixture;
 import com.fullcycle.catalogo.domain.pagination.Pagination;
-import com.fullcycle.catalogo.domain.utils.IdUtils;
-import com.fullcycle.catalogo.domain.utils.InstantUtils;
 import com.fullcycle.catalogo.infrastructure.configuration.security.Roles;
-import com.fullcycle.catalogo.infrastructure.genre.GqlGenrePresenter;
-import com.fullcycle.catalogo.infrastructure.genre.models.GqlGenre;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.graphql.server.WebGraphQlHandler;
-import org.springframework.graphql.test.tester.GraphQlTester;
 import org.springframework.graphql.test.tester.WebGraphQlTester;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 @IntegrationTest
 public class GenreGraphQLIT {
