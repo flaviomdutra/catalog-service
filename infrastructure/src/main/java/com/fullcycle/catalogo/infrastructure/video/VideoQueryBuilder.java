@@ -1,4 +1,3 @@
-
 package com.fullcycle.catalogo.infrastructure.video;
 
 import co.elastic.clients.elasticsearch._types.FieldValue;
